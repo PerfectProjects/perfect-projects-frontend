@@ -30,10 +30,10 @@ jobs:
           cache: 'npm'
       # Runs a single command using the runners shell
       - name: Run a one-line script
-      - run: npm install
-      - run: npm --version
-      - run: npm install -g @angular/cli
-      - run: ng --version
-      - run: ng lint
+        run: npm install
+             npm --version
+             npm install -g @angular/cli
+             ng --version
+             ng lint
 
 
