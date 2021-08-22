@@ -33,9 +33,7 @@ jobs:
         run: |
           npm install
           npm --version
-          npm install -g @angular/cli
           ng --version
-          ng add @angular-eslint/schematics
-          ng lint
+          npx eslint **/*
 
 
