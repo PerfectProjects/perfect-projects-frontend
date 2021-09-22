@@ -3,24 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './main/header/header.component';
-import { BodyComponent } from './main/body/body.component';
-import { ProjectListComponent } from './main/body/project-list/project-list.component';
-import { ProjectComponent } from './main/body/project-list/project/project.component';
-import { ProjectThumbnailComponent } from './main/body/project-list/project/project-thumbnail/project-thumbnail.component';
-import { ProjectDescriptionComponent } from './main/body/project-list/project/project-description/project-description.component';
-import { ProjectStatsComponent } from './main/body/project-list/project/project-stats/project-stats.component';
+import { BodyComponent } from './perfect-projects/body/body.component';
+import { ProjectListComponent } from './perfect-projects/body/project-list/project-list.component';
+import { ProjectComponent } from './perfect-projects/body/project-list/project/project.component';
+import { ProjectThumbnailComponent } from './perfect-projects/body/project-list/project/project-thumbnail/project-thumbnail.component';
+import { ProjectDescriptionComponent } from './perfect-projects/body/project-list/project/project-description/project-description.component';
+import { ProjectStatsComponent } from './perfect-projects/body/project-list/project/project-stats/project-stats.component';
+import { PerfectProjectsComponent } from './perfect-projects/perfect-projects.component';
+import { NavbarComponent } from "./perfect-projects/navbar/navbar.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    NavbarComponent,
     BodyComponent,
     ProjectListComponent,
     ProjectComponent,
     ProjectThumbnailComponent,
     ProjectDescriptionComponent,
-    ProjectStatsComponent
+    ProjectStatsComponent,
+    PerfectProjectsComponent
   ],
   imports: [
     BrowserModule,

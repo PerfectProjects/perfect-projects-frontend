@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ProjectThumbnailComponent } from './project-thumbnail.component';
+import {ProjectThumbnailComponent} from './project-thumbnail.component';
 
 describe('ProjectThumbnailComponent', () => {
   let component: ProjectThumbnailComponent;
@@ -8,9 +8,9 @@ describe('ProjectThumbnailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProjectThumbnailComponent ]
+      declarations: [ProjectThumbnailComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
