@@ -11,6 +11,7 @@ import { ProjectDescriptionComponent } from './perfect-projects/body/project-lis
 import { ProjectStatsComponent } from './perfect-projects/body/project-list/project/project-stats/project-stats.component';
 import { PerfectProjectsComponent } from './perfect-projects/perfect-projects.component';
 import { NavbarComponent } from "./perfect-projects/navbar/navbar.component";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NavbarComponent } from "./perfect-projects/navbar/navbar.component";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
