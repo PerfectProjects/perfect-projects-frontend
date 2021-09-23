@@ -7,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ProjectListComponent implements OnInit {
 
+  pictures = ["game", "picture", "room"];
+
   constructor() {
   }
 
