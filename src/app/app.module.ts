@@ -12,6 +12,8 @@ import { ProjectStatsComponent } from './perfect-projects/body/project-list/proj
 import { PerfectProjectsComponent } from './perfect-projects/perfect-projects.component';
 import { NavbarComponent } from "./perfect-projects/navbar/navbar.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SignInComponent } from './perfect-projects/body/sign-in/sign-in.component';
+import { SignUpComponent } from './perfect-projects/body/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProjectThumbnailComponent,
     ProjectDescriptionComponent,
     ProjectStatsComponent,
-    PerfectProjectsComponent
+    PerfectProjectsComponent,
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
