@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 
 @Component({
@@ -11,7 +11,9 @@ export class SignUpComponent implements OnInit {
   inputNickname: any;
   inputPassword: any;
   inputRepeatPassword: any;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
