@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SignInService} from "../../../services/sign-in.service";
 
 @Component({
   selector: 'app-sign-in',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-
-  constructor() { }
+  inputUsername: any;
+  inputPassword: any;
+  constructor(private signInService: SignInService) { }
 
   ngOnInit(): void {
   }
 
+  onSubmit() {
+    this.signInService.signIn({
+      username: this.inputUsername,
+      password: this.inputPassword});
+  }
 }

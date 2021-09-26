@@ -1,4 +1,4 @@
-<form #signUpForm="ngForm" (ngSubmit)="onSubmit(signUpForm)">
+<form (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="inputEmail">Email</label>
     <input type="email"
@@ -15,7 +15,7 @@
            id="inputNickname"
            name="inputNickname"
            placeholder="Enter nickname"
-           [(ngModel)]="inputNickname">
+           [(ngModel)]="inputUsername">
     <small class="form-text text-muted">Chose a nickname visible for other users.</small>
   </div>
   <div class="form-group">
