@@ -14,6 +14,7 @@ import { NavbarComponent } from "./perfect-projects/navbar/navbar.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SignInComponent } from './perfect-projects/body/sign-in/sign-in.component';
 import { SignUpComponent } from './perfect-projects/body/sign-up/sign-up.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SignUpComponent } from './perfect-projects/body/sign-up/sign-up.compone
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
