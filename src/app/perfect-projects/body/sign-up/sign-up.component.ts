@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SignUpService} from "../../../services/sign-up.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-up',
@@ -12,7 +13,8 @@ export class SignUpComponent implements OnInit {
   inputPassword: any;
   inputRepeatPassword: any;
 
-  constructor(private signUpService: SignUpService) {
+  constructor(private signUpService: SignUpService,
+              private router:Router) {
   }
 
   ngOnInit(): void {
@@ -23,6 +25,10 @@ export class SignUpComponent implements OnInit {
       email: this.inputEmail,
       password: this.inputPassword,
       username: this.inputUsername
-    });
+    }).subscribe(
+      (data) => {
+          if(data.success)
+            this.router.navigate(["/"]);
+      });
   }
 }

@@ -14,12 +14,6 @@ export class SignUpService {
   createAccount = (signUpUser: SignUpUser) => {
     console.log("createAccount called");
 
-    this.http.post("http://127.0.0.1:5000/sign-up", {"newUser": signUpUser}).subscribe(
-      (response) => {
-        // TODO Handle response from the server
-        console.log("Response!");
-        console.log(response);
-      }
-    );
+    return this.http.post<{success: boolean}>("http://127.0.0.1:5000/sign-up", {"newUser": signUpUser});
   }
 }
