@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SignUpService} from "../../../services/sign-up.service";
+import {SignUpService} from "../../../rest/sign-up.service";
 import {Router} from "@angular/router";
 
 @Component({

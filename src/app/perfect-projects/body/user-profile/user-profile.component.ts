@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {UserProfileService} from "../../../services/user-profile.service";
+import {UserProfileService} from "../../../rest/user-profile.service";
 import {UserProfileData} from "../../../models/user-profile-data";
 
 @Component({
