@@ -1,1 +1,13 @@
-<p>user-profile works!</p>
+<div *ngIf="userProfileData">
+  <div>
+    <h1>{{userProfileData.userName}}'s profile!</h1>
+  </div>
+  <div *ngIf="userProfileData.projects">
+    <h2>projects</h2>
+    <ul>
+      <li *ngFor="let project of userProfileData.projects;">
+        <a>{{project.projectName}}</a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import {PerfectProjectsComponent} from "./perfect-projects/perfect-projects.comp
 import {ProjectListComponent} from "./perfect-projects/body/project-list/project-list.component";
 import {SignUpComponent} from "./perfect-projects/body/sign-up/sign-up.component";
 import {SignInComponent} from "./perfect-projects/body/sign-in/sign-in.component";
+import {UserProfileComponent} from "./perfect-projects/body/user-profile/user-profile.component";
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
       {path: '', component: ProjectListComponent},
       {path: 'sign-up', component: SignUpComponent},
       {path: 'sign-in', component: SignInComponent},
+      {path: 'user-profile/:userId', component: UserProfileComponent},
     ]
   }
 ];

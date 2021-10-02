@@ -16,6 +16,8 @@ import { SignInComponent } from './perfect-projects/body/sign-in/sign-in.compone
 import { SignUpComponent } from './perfect-projects/body/sign-up/sign-up.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { ProjectPageComponent } from './perfect-projects/body/project-page/project-page.component';
+import { UserProfileComponent } from './perfect-projects/body/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {HttpClientModule} from "@angular/common/http";
     ProjectStatsComponent,
     PerfectProjectsComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    ProjectPageComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
