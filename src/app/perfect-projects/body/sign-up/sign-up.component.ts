@@ -26,8 +26,8 @@ export class SignUpComponent implements OnInit {
       password: this.inputPassword,
       username: this.inputUsername
     }).subscribe(
-      (data) => {
-          if(data.success)
+      (response) => {
+          if(response.success)
             this.router.navigate(["/verify-account"]);
       });
   }

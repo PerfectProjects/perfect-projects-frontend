@@ -9,11 +9,8 @@ export class VerifyAccountService {
   }
 
   public sendCode = (verifyCode: string) => {
-    if (verifyCode)
-      return this.http.post<{ success: boolean }>(
-        "http://127.0.0.1:5000/verify-account",
-        {headers: {"verifyCode": verifyCode}});
-
-    return;
+    return this.http.post<{ success: boolean }>(
+      "http://127.0.0.1:5000/verify-account",
+      {"verifyCode": verifyCode});
   }
 }
