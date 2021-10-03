@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="inputVerifyCode">Verify Code</label>
+    <input type="text"
+           class="form-control"
+           id="inputVerifyCode"
+           name="inputVerifyCode"
+           placeholder="insert code..."
+           [(ngModel)]="inputVerifyCode">
+  </div>
+  <button type="submit" class="btn btn-primary">Verify</button>
+</form>
