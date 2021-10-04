@@ -12,14 +12,8 @@ export class SignInService {
   }
 
   signIn = (signInUser: SignInUser) => {
-    console.log("createAccount called");
-
-    this.http.post("http://127.0.0.1:5000/sign-in", {"user": signInUser}).subscribe(
-      (response) => {
-        // TODO Handle response from the server
-        console.log("Response!");
-        console.log(response);
-      }
-    );
+    return this.http.post<{authorization: string}>(
+      "http://127.0.0.1:5000/sign-in",
+      {"user": signInUser});
   }
 }

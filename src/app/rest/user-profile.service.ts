@@ -12,7 +12,9 @@ export class UserProfileService {
 
   public getUser = (userId: string | null) => {
     if (userId) {
-      return this.http.get<UserProfileData>("http://127.0.0.1:5000/get-user", {headers: {"userId": userId}});
+      return this.http.get<UserProfileData>(
+        "http://127.0.0.1:5000/get-user",
+        {headers: {"userId": userId}});
     }
     return;
   }

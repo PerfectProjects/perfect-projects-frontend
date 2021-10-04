@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SignInService} from "../../../rest/sign-in.service";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-sign-in',
@@ -20,6 +21,12 @@ export class SignInComponent implements OnInit {
     this.signInService.signIn({
       username: this.inputUsername,
       password: this.inputPassword
-    });
+    }).subscribe(
+      (response) => {
+        // TODO Handle response from the server
+        console.log("Response!");
+        console.log(response);
+      }
+    );
   }
 }
