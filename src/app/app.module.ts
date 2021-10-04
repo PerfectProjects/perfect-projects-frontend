@@ -19,6 +19,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {ProjectPageComponent} from './perfect-projects/body/project-page/project-page.component';
 import {UserProfileComponent} from './perfect-projects/body/user-profile/user-profile.component';
 import {VerifyAccountComponent} from './perfect-projects/body/verify-account/verify-account.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import {VerifyAccountComponent} from './perfect-projects/body/verify-account/ver
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
