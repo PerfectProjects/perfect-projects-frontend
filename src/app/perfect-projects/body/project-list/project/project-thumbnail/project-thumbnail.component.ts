@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ProjectThumbnailComponent implements OnInit {
 
-  @Input("picture") picture="";
+  @Input("picture") picture = "";
 
   constructor() {
   }

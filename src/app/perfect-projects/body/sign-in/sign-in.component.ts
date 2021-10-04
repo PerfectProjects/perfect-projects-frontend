@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SignInService} from "../../../rest/sign-in.service";
 
 @Component({
@@ -9,7 +9,9 @@ import {SignInService} from "../../../rest/sign-in.service";
 export class SignInComponent implements OnInit {
   inputUsername: any;
   inputPassword: any;
-  constructor(private signInService: SignInService) { }
+
+  constructor(private signInService: SignInService) {
+  }
 
   ngOnInit(): void {
   }
@@ -17,6 +19,7 @@ export class SignInComponent implements OnInit {
   onSubmit() {
     this.signInService.signIn({
       username: this.inputUsername,
-      password: this.inputPassword});
+      password: this.inputPassword
+    });
   }
 }

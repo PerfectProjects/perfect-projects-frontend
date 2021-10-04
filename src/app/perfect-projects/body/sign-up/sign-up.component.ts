@@ -14,7 +14,7 @@ export class SignUpComponent implements OnInit {
   inputRepeatPassword: any;
 
   constructor(private signUpService: SignUpService,
-              private router:Router) {
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -27,8 +27,8 @@ export class SignUpComponent implements OnInit {
       username: this.inputUsername
     }).subscribe(
       (response) => {
-          if(response.success)
-            this.router.navigate(["/verify-account"]);
+        if (response.success)
+          this.router.navigate(["/verify-account"]);
       });
   }
 }

@@ -19,7 +19,9 @@ export class VerifyAccountComponent implements OnInit {
   onSubmit() {
     this.verifyAccount.sendCode(this.inputVerifyCode)
       .subscribe((response) => {
-        console.log(response);
+        if (response.success) {
+          this.inputVerifyCode = "";
+        }
       });
   }
 }
