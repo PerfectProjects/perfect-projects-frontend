@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {SignUpService} from "../../../rest/sign-up.service";
 import {Router} from "@angular/router";
 import {SignInService} from "../../../rest/sign-in.service";
-import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-sign-up',
@@ -17,8 +16,7 @@ export class SignUpComponent implements OnInit {
 
   constructor(private signUpService: SignUpService,
               private router: Router,
-              private signInService: SignInService,
-              private auth: AuthService) {
+              private signInService: SignInService) {
   }
 
   ngOnInit(): void {
@@ -34,7 +32,6 @@ export class SignUpComponent implements OnInit {
         if (response.success)
           this.signInService.signIn({password: this.inputPassword, username: this.inputUsername})
             .subscribe((response) => {
-              this.auth.setToken(response.authorization);
               this.router.navigate(["/verify-account"]);
             });
       });

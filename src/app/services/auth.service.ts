@@ -19,4 +19,16 @@ export class AuthService {
     localStorage.removeItem("authorization");
     localStorage.setItem("authorization", value);
   }
+
+  public getUsername = () => {
+    const username = localStorage.getItem("username");
+    if(username)
+      return username;
+    else return "";
+  }
+
+  public setUsername(value: string) {
+    localStorage.removeItem("username");
+    localStorage.setItem("username", value);
+  }
 }

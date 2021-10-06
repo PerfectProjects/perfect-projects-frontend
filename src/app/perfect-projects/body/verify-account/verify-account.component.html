@@ -1,12 +1,12 @@
 <form (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label for="inputVerifyCode">Verify Code</label>
+    <label for="inputConfirmationCode">Confirmation Code</label>
     <input type="text"
            class="form-control"
-           id="inputVerifyCode"
-           name="inputVerifyCode"
+           id="inputConfirmationCode"
+           name="inputConfirmationCode"
            placeholder="insert code..."
-           [(ngModel)]="inputVerifyCode">
+           [(ngModel)]="inputConfirmationCode">
   </div>
   <button type="submit" class="btn btn-primary">Verify</button>
 </form>

@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {VerifyAccountService} from "../../../rest/verify-account.service";
 import {ToastService} from "../../../services/toast.service";
-import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-verify-account',
@@ -10,7 +9,7 @@ import {AuthService} from "../../../services/auth.service";
 })
 export class VerifyAccountComponent implements OnInit {
 
-  inputVerifyCode: any;
+  inputConfirmationCode: any;
 
   constructor(private verifyAccount: VerifyAccountService,
               private toast: ToastService,
@@ -21,8 +20,7 @@ export class VerifyAccountComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.auth.getToken());
-    this.verifyAccount.sendCode(this.inputVerifyCode, this.auth.getToken())
+    this.verifyAccount.sendCode(this.inputConfirmationCode, username)
       .subscribe((response) => {
         if (response.success) {
           this.toast.showMessage("Account verified!");
