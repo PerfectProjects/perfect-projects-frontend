@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {SignUpService} from "../../../rest/sign-up.service";
 import {Router} from "@angular/router";
 import {SignInService} from "../../../rest/sign-in.service";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-sign-up',
@@ -16,7 +17,7 @@ export class SignUpComponent implements OnInit {
 
   constructor(private signUpService: SignUpService,
               private router: Router,
-              private signInService: SignInService) {
+              private auth: AuthService) {
   }
 
   ngOnInit(): void {
@@ -30,10 +31,8 @@ export class SignUpComponent implements OnInit {
     }).subscribe(
       (response) => {
         if (response.success)
-          this.signInService.signIn({password: this.inputPassword, username: this.inputUsername})
-            .subscribe((response) => {
-              this.router.navigate(["/verify-account"]);
-            });
+          this.auth.setUsername(this.inputUsername);
+          this.router.navigate(["/verify-account"]);
       });
   }
 }

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {VerifyAccountService} from "../../../rest/verify-account.service";
 import {ToastService} from "../../../services/toast.service";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-verify-account',
@@ -20,7 +21,7 @@ export class VerifyAccountComponent implements OnInit {
   }
 
   onSubmit() {
-    this.verifyAccount.sendCode(this.inputConfirmationCode, username)
+    this.verifyAccount.sendCode(this.inputConfirmationCode, this.auth.getUsername())
       .subscribe((response) => {
         if (response.success) {
           this.toast.showMessage("Account verified!");
