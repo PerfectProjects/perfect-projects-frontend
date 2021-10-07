@@ -12,7 +12,7 @@ export class ToastService {
   public showMessage = ((message: string, type: string) => {
     let toast = this.toastr.show().toastRef;
     toast.componentInstance.message = message;
-    toast.componentInstance.message = type;
+    toast.componentInstance.type = type;
 
     setTimeout(()=>{
       toast.close();

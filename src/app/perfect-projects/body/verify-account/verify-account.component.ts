@@ -21,12 +21,11 @@ export class VerifyAccountComponent implements OnInit {
   }
 
   onSubmit() {
-    this.toast.showMessage("siemano", "SUCCESS");
-    // this.verifyAccount.sendCode(this.inputConfirmationCode, this.auth.getUsername())
-    //   .subscribe((response) => {
-    //     if (response.success) {
-    //       this.toastr.show("Account verified!");
-    //     }
-    //   });
+    this.verifyAccount.sendCode(this.inputConfirmationCode, this.auth.getUsername())
+      .subscribe((response) => {
+        if (response.success) {
+          this.toast.showMessage("Account verified!", "SUCCESS");
+        }
+      });
   }
 }
