@@ -1,3 +1,9 @@
-<div class="alert alert-success text-center" role="alert">
+<div *ngIf="isSuccess() === true" class="alert alert-success text-center" role="alert">
+  {{message}}
+</div>
+<div *ngIf="isError() === true" class="alert alert-danger text-center" role="alert">
+  {{message}}
+</div>
+<div *ngIf="isInfo() === true" class="alert alert-info text-center" role="alert">
   {{message}}
 </div>
