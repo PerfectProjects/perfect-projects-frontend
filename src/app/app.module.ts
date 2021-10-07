@@ -21,6 +21,7 @@ import {UserProfileComponent} from './perfect-projects/body/user-profile/user-pr
 import {VerifyAccountComponent} from './perfect-projects/body/verify-account/verify-account.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
+import { ToastComponent } from './perfect-projects/body/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {ToastrModule} from "ngx-toastr";
     SignUpComponent,
     ProjectPageComponent,
     UserProfileComponent,
-    VerifyAccountComponent
+    VerifyAccountComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
@@ -46,10 +48,13 @@ import {ToastrModule} from "ngx-toastr";
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      toastComponent: ToastComponent,
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  entryComponents: [ToastComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 }

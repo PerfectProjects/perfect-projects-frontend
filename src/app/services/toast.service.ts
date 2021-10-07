@@ -9,7 +9,13 @@ export class ToastService {
   constructor(private toastr: ToastrService) {
   }
 
-  public showMessage = ((message: string) => {
-    this.toastr.show(message, "test");
+  public showMessage = ((message: string, type: string) => {
+    let toast = this.toastr.show().toastRef;
+    toast.componentInstance.message = message;
+    toast.componentInstance.message = type;
+
+    setTimeout(()=>{
+      toast.close();
+    },3000);
   });
 }
