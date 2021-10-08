@@ -22,6 +22,7 @@ import {VerifyAccountComponent} from './perfect-projects/body/verify-account/ver
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import { ToastComponent } from './perfect-projects/body/toast/toast.component';
+import {CookieService} from "ngx-cookie-service";
 
 @NgModule({
   declarations: [
@@ -50,9 +51,9 @@ import { ToastComponent } from './perfect-projects/body/toast/toast.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       toastComponent: ToastComponent,
-    }),
+    })
   ],
-  providers: [],
+  providers: [CookieService],
   entryComponents: [ToastComponent],
   bootstrap: [AppComponent],
 })
