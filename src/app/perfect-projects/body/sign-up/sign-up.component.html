@@ -68,5 +68,5 @@
     </small>
 
   </div>
-  <button type="submit" class="btn btn-primary" [disabled]="!signUpForm.valid && !passwordMatch()">Create</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!signUpForm.valid || !passwordMatch()">Create</button>
 </form>
