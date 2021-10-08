@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SignUpService} from "../../../rest/sign-up.service";
 import {Router} from "@angular/router";
-import {SignInService} from "../../../rest/sign-in.service";
 import {AuthService} from "../../../services/auth.service";
 
 @Component({
@@ -34,5 +33,9 @@ export class SignUpComponent implements OnInit {
           this.auth.setUsername(this.inputUsername);
           this.router.navigate(["/verify-account"]);
       });
+  }
+
+  passwordMatch() {
+    return this.inputRepeatPassword === this.inputPassword;
   }
 }
