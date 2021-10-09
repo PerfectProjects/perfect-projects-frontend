@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {VerifyAccountService} from "../../../rest/verify-account.service";
+import {VerifyAccountRestService} from "../../../rest/verify-account-rest.service";
 import {ToastService} from "../../../services/toast.service";
 import {AuthService} from "../../../services/auth.service";
 import {ToastState} from "../../../models/toast-state";
@@ -13,7 +13,7 @@ export class VerifyAccountComponent implements OnInit {
 
   inputConfirmationCode: any;
 
-  constructor(private verifyAccount: VerifyAccountService,
+  constructor(private verifyAccount: VerifyAccountRestService,
               private toast: ToastService,
               private auth: AuthService) {
   }

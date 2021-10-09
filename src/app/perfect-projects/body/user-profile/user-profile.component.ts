@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {UserProfileService} from "../../../rest/user-profile.service";
+import {UserProfileRestService} from "../../../rest/user-profile-rest.service";
 import {UserProfileData} from "../../../models/user-profile-data";
 
 @Component({
@@ -13,7 +13,7 @@ export class UserProfileComponent implements OnInit {
   public userProfileData?: UserProfileData;
 
   constructor(private route: ActivatedRoute,
-              private userProfile: UserProfileService) {
+              private userProfile: UserProfileRestService) {
   }
 
   ngOnInit(): void {

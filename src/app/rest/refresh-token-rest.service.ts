@@ -4,7 +4,7 @@ import {HttpClient} from "@angular/common/http";
 @Injectable({
   providedIn: 'root'
 })
-export class RefreshTokenService {
+export class RefreshTokenRestService {
 
   constructor(private http: HttpClient) {
   }

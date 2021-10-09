@@ -6,7 +6,7 @@ import {HttpClient} from "@angular/common/http";
 @Injectable({
   providedIn: 'root'
 })
-export class SignInService {
+export class SignInRestService {
 
   constructor(private http: HttpClient) {
   }

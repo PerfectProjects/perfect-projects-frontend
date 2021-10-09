@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {SignInService} from "../../../rest/sign-in.service";
+import {SignInRestService} from "../../../rest/sign-in-rest.service";
 import {AuthService} from "../../../services/auth.service";
-import {RefreshTokenService} from "../../../rest/refresh-token.service";
+import {RefreshTokenRestService} from "../../../rest/refresh-token-rest.service";
 
 @Component({
   selector: 'app-sign-in',
@@ -12,9 +12,9 @@ export class SignInComponent implements OnInit {
   inputUsername: any;
   inputPassword: any;
 
-  constructor(private signIn: SignInService,
+  constructor(private signIn: SignInRestService,
               private auth: AuthService,
-              private refreshToken: RefreshTokenService) {
+              private refreshToken: RefreshTokenRestService) {
   }
 
   ngOnInit(): void {

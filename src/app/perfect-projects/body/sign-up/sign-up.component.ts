@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SignUpService} from "../../../rest/sign-up.service";
+import {SignUpRestService} from "../../../rest/sign-up-rest.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../../services/auth.service";
 
@@ -14,7 +14,7 @@ export class SignUpComponent implements OnInit {
   inputPassword: any;
   inputRepeatPassword: any;
 
-  constructor(private signUpService: SignUpService,
+  constructor(private signUpService: SignUpRestService,
               private router: Router,
               private auth: AuthService) {
   }

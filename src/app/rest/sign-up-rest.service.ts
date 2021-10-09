@@ -1,16 +1,19 @@
 import {Injectable} from '@angular/core';
+import {SignUpUser} from "../models/sign-up-user";
 import {HttpClient} from "@angular/common/http";
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class VerifyAccountService {
+export class SignUpRestService {
+
   constructor(private http: HttpClient) {
   }
 
-  public sendCode = (confirmationCode: string, username: string) => {
+  createAccount = (signUpUser: SignUpUser) => {
     return this.http.post<{ success: boolean }>(
-      "http://127.0.0.1:5000/verify-account",
-      {"confirmationCode": confirmationCode, "username": username});
+      "http://127.0.0.1:5000/sign-up",
+      {"newUser": signUpUser});
   }
 }
