@@ -12,7 +12,7 @@ export class SignInService {
   }
 
   signIn = (signInUser: SignInUser) => {
-    return this.http.post<{ accessToken: string, refreshToken: string }>(
+    return this.http.post<{ payload: { accessToken: string, refreshToken: string }}>(
       "http://127.0.0.1:5000/sign-in",
       {"user": signInUser});
   }

@@ -9,13 +9,17 @@ export class AuthService {
   authorization: string = "";
 
   constructor(private cookie: CookieService) {
-
   }
 
   public setRefreshToken(value: string) {
     this.cookie.delete("REFRESH_TOKEN");
-    this.cookie.set("REFRESH_TOKEN", value);
+    this.cookie.set("REFRESH_TOKEN", value, {sameSite: "Strict", secure: true, path: "/sign-in"});
   }
+
+  public getRefreshToken() {
+    return this.cookie.get("REFRESH_TOKEN");
+  }
+
   public setAuthorization(value: string) {
     this.authorization = value;
   }
@@ -26,7 +30,7 @@ export class AuthService {
 
   public getUsername() {
     const username = localStorage.getItem("username");
-    return username!=null ? username : "";
+    return username != null ? username : "";
   }
 
   public setUsername(value: string) {

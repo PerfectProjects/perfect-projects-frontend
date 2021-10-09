@@ -12,27 +12,26 @@ export class SignInComponent implements OnInit {
   inputUsername: any;
   inputPassword: any;
 
-  constructor(private signInService: SignInService,
+  constructor(private signIn: SignInService,
               private auth: AuthService,
-              private asd: RefreshTokenService) {
+              private refreshToken: RefreshTokenService) {
   }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    this.signInService.signIn({
+    this.signIn.signIn({
       username: this.inputUsername,
       password: this.inputPassword
     }).subscribe(
       (response) => {
-        this.auth.setRefreshToken(response.refreshToken);
-        this.auth.setAuthorization(response.accessToken);
-
-        //TODO delete after tests
-        this.asd.refresh().subscribe((response) => {
-          console.log(response.accessToken);
-        });
+        this.auth.setRefreshToken(response.payload.refreshToken);
+        this.auth.setAuthorization(response.payload.accessToken);
+        // this.refreshToken.refresh(this.auth.getRefreshToken(), this.auth.getUsername())
+        //   .subscribe((response) => {
+        //     this.auth.setAuthorization(response.accessToken);
+        //   });
       }
     );
   }
