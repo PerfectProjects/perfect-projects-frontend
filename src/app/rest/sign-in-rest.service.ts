@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {SignInUser} from "../models/sign-in-user";
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
 
 @Injectable({
@@ -12,8 +13,10 @@ export class SignInRestService {
   }
 
   signIn = (signInUser: SignInUser) => {
-    return this.http.post<{ payload: { accessToken: string, refreshToken: string }}>(
-      "http://127.0.0.1:5000/sign-in",
-      {"user": signInUser});
+    const httpOptions = { withCredentials: true };
+    return this.http.post<{ payload: { accessToken: string } }>(
+      `${environment.apiURL}/sign-in`,
+      {"user": signInUser},
+      httpOptions);
   }
 }

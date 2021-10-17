@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class VerifyAccountRestService {
 
   public sendCode = (confirmationCode: string, username: string) => {
     return this.http.post<{ success: boolean }>(
-      "http://127.0.0.1:5000/verify-account",
+      `${environment.apiURL}//verify-account`,
       {"confirmationCode": confirmationCode, "username": username});
   }
 }

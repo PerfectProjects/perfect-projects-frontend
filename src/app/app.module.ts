@@ -15,14 +15,14 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {SignInComponent} from './perfect-projects/body/sign-in/sign-in.component';
 import {SignUpComponent} from './perfect-projects/body/sign-up/sign-up.component';
 import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ProjectPageComponent} from './perfect-projects/body/project-page/project-page.component';
 import {UserProfileComponent} from './perfect-projects/body/user-profile/user-profile.component';
 import {VerifyAccountComponent} from './perfect-projects/body/verify-account/verify-account.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import { ToastComponent } from './perfect-projects/body/toast/toast.component';
-import {CookieService} from "ngx-cookie-service";
+import {AuthService} from "./services/auth.service";
 
 @NgModule({
   declarations: [
@@ -53,7 +53,8 @@ import {CookieService} from "ngx-cookie-service";
       toastComponent: ToastComponent,
     })
   ],
-  providers: [CookieService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthService, multi: true }],
   entryComponents: [ToastComponent],
   bootstrap: [AppComponent],
 })

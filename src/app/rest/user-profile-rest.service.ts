@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {UserProfileData} from "../models/user-profile-data";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class UserProfileRestService {
   public getUser = (userId: string | null) => {
     if (userId) {
       return this.http.get<UserProfileData>(
-        "http://127.0.0.1:5000/get-user",
+        `${environment.apiURL}/get-user`,
         {headers: {"userId": userId}});
     }
     return;

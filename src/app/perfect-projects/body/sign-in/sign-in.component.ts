@@ -13,8 +13,8 @@ export class SignInComponent implements OnInit {
   inputPassword: any;
 
   constructor(private signIn: SignInRestService,
-              private auth: AuthService,
-              private refreshToken: RefreshTokenRestService) {
+              private refresh: RefreshTokenRestService,
+              private auth: AuthService) {
   }
 
   ngOnInit(): void {
@@ -26,13 +26,15 @@ export class SignInComponent implements OnInit {
       password: this.inputPassword
     }).subscribe(
       (response) => {
-        this.auth.setRefreshToken(response.payload.refreshToken);
         this.auth.setAuthorization(response.payload.accessToken);
-        // this.refreshToken.refresh(this.auth.getRefreshToken(), this.auth.getUsername())
-        //   .subscribe((response) => {
-        //     this.auth.setAuthorization(response.accessToken);
-        //   });
-      }
-    );
+        this.auth.setUsername(this.inputUsername);
+      });
+  }
+  //TODO remove test method
+  test() {
+    this.refresh.refresh(this.auth.getUsername()).subscribe((response)=>{
+      console.log(response);
+      this.auth.setAuthorization(response.payload.accessToken);
+    });
   }
 }
