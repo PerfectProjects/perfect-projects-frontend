@@ -27,14 +27,6 @@ export class SignInComponent implements OnInit {
     }).subscribe(
       (response) => {
         this.auth.setAuthorization(response.payload.accessToken);
-        this.auth.setUsername(this.inputUsername);
       });
-  }
-  //TODO remove test method
-  test() {
-    this.refresh.refresh(this.auth.getUsername()).subscribe((response)=>{
-      console.log(response);
-      this.auth.setAuthorization(response.payload.accessToken);
-    });
   }
 }

@@ -21,8 +21,8 @@ import {UserProfileComponent} from './perfect-projects/body/user-profile/user-pr
 import {VerifyAccountComponent} from './perfect-projects/body/verify-account/verify-account.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
-import { ToastComponent } from './perfect-projects/body/toast/toast.component';
-import {AuthService} from "./services/auth.service";
+import {ToastComponent} from './perfect-projects/body/toast/toast.component';
+import {InterceptorService} from "./services/interceptor.service";
 
 @NgModule({
   declarations: [
@@ -54,7 +54,7 @@ import {AuthService} from "./services/auth.service";
     })
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthService, multi: true }],
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
   entryComponents: [ToastComponent],
   bootstrap: [AppComponent],
 })
