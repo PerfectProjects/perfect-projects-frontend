@@ -9,7 +9,7 @@
       <a class="nav-item nav-link" routerLink="/sign-up">sign up</a>
     </div>
     <ng-template #userSigned class="d-flex">
-      <a class="nav-item nav-link">{{getUsername()}}</a>
+      <a class="nav-item nav-link" [routerLink]="['/user-profile', 'reoskaro']">Hello {{getUsername()}}!</a>
     </ng-template>
   </div>
 </nav>

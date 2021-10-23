@@ -15,7 +15,6 @@ export class NavbarComponent implements OnInit {
   }
 
   public getUsername() {
-    console.log(this.auth.getUsername());
     return this.auth.getUsername();
   }
 }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {SignInRestService} from "../../../rest/sign-in-rest.service";
 import {AuthService} from "../../../services/auth.service";
 import {RefreshTokenRestService} from "../../../rest/refresh-token-rest.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-in',
@@ -14,7 +15,8 @@ export class SignInComponent implements OnInit {
 
   constructor(private signIn: SignInRestService,
               private refresh: RefreshTokenRestService,
-              private auth: AuthService) {
+              private auth: AuthService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -27,6 +29,7 @@ export class SignInComponent implements OnInit {
     }).subscribe(
       (response) => {
         this.auth.setAuthorization(response.payload.accessToken);
+        this.router.navigate(["/"]);
       });
   }
 }

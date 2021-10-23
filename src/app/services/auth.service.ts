@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {JwtHelperService} from "@auth0/angular-jwt";
 import {CookieService} from "ngx-cookie-service";
 
 @Injectable({
@@ -13,11 +12,7 @@ export class AuthService {
   }
 
   public setAuthorization(value: string) {
-    const jwtHelper: JwtHelperService = new JwtHelperService();
     this.accessToken = value;
-    if (this.cookie.check("username"))
-      this.cookie.delete("username");
-    this.cookie.set("username", jwtHelper.decodeToken(this.accessToken).username);
   }
 
   public getAccessToken() {
@@ -25,6 +20,8 @@ export class AuthService {
   }
 
   public getUsername() {
-    return this.cookie.get("username");
+    if(this.cookie.check("username"))
+      return atob(this.cookie.get("username"));
+    return "";
   }
 }

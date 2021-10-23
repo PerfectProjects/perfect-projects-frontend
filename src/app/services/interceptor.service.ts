@@ -19,7 +19,7 @@ export class InterceptorService implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log("interceptor called!");
-    if (request.url == this.refreshTokenUrl) {
+    if (request.url === this.refreshTokenUrl) {
       return next.handle(request);
     }
 
