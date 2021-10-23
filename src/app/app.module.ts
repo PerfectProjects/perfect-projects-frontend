@@ -23,6 +23,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import {ToastComponent} from './perfect-projects/body/toast/toast.component';
 import {InterceptorService} from "./services/interceptor.service";
+import {CookieService} from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -54,9 +55,10 @@ import {InterceptorService} from "./services/interceptor.service";
     })
   ],
   providers: [
+    [CookieService],
     {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
-  entryComponents: [ToastComponent],
-  bootstrap: [AppComponent],
+    entryComponents: [ToastComponent],
+    bootstrap: [AppComponent],
 })
 export class AppModule {
 }

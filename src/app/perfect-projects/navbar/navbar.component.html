@@ -4,9 +4,12 @@
       <a class="nav-item nav-link active" routerLink="/">Perfect Projects<span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link active" [routerLink]="['/user-profile', 'reoskaro']">My Profile</a>
     </div>
-    <div class="d-flex">
+    <div *ngIf="getUsername() === '';else userSigned" class="d-flex">
       <a class="nav-item nav-link" routerLink="/sign-in">sign in</a>
       <a class="nav-item nav-link" routerLink="/sign-up">sign up</a>
     </div>
+    <ng-template #userSigned class="d-flex">
+      <a class="nav-item nav-link">{{getUsername()}}</a>
+    </ng-template>
   </div>
 </nav>

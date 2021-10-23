@@ -1,26 +1,30 @@
 import {Injectable} from '@angular/core';
 import {JwtHelperService} from "@auth0/angular-jwt";
+import {CookieService} from "ngx-cookie-service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private authorization: string = "";
-  private jwtHelper: JwtHelperService = new JwtHelperService();
+  private accessToken: string = "";
 
-  public setAuthorization(value: string) {
-    this.authorization = value;
+  constructor(private cookie: CookieService) {
   }
 
-  public getAuthorization() {
-    return this.authorization;
+  public setAuthorization(value: string) {
+    const jwtHelper: JwtHelperService = new JwtHelperService();
+    this.accessToken = value;
+    if (this.cookie.check("username"))
+      this.cookie.delete("username");
+    this.cookie.set("username", jwtHelper.decodeToken(this.accessToken).username);
+  }
+
+  public getAccessToken() {
+    return this.accessToken;
   }
 
   public getUsername() {
-    if (this.authorization !== "") {
-      return this.jwtHelper.decodeToken(this.authorization).username;
-    }
-    return "";
+    return this.cookie.get("username");
   }
 }

@@ -82,7 +82,10 @@
         },
         "serve": {
           "options": {
-            "host": "perfect-projects.com"
+            "sslCert": "perfect-projects.com.cert",
+            "sslKey": "perfect-projects.com.key",
+            "host": "perfect-projects.com",
+            "ssl": true
           },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
