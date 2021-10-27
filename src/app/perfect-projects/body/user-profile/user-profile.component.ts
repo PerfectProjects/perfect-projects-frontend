@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {UserProfileRestService} from "../../../rest/user-profile-rest.service";
 import {UserProfileData} from "../../../models/user-profile-data";
+import {catchError} from "rxjs/operators";
 
 @Component({
   selector: 'app-user-profile',
@@ -18,14 +19,16 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
-      const userId = paramMap.get("userId");
-      this.userProfile.getUser(userId)?.subscribe(
-        (response) => {
-          // TODO Handle response from the server
-          console.log("Response!");
-          console.log(response);
-          this.userProfileData = response;
-        });
+      let userId = paramMap.get("userId");
+      if (userId!==null)
+        this.userProfile.getUser().subscribe(
+          (response) => {
+            this.userProfileData = response;
+          },
+          (error) => {
+            console.log(error);
+           return catchError(error);
+          });
     });
   }
 }

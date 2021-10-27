@@ -11,12 +11,8 @@ export class UserProfileRestService {
   constructor(private http: HttpClient) {
   }
 
-  public getUser = (userId: string | null) => {
-    if (userId) {
+  public getUser = () => {
       return this.http.get<UserProfileData>(
-        `${environment.apiURL}/get-user`,
-        {headers: {"userId": userId}});
+        `${environment.apiURL}/get-user`);
     }
-    return;
-  }
 }

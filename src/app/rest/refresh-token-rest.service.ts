@@ -11,8 +11,8 @@ export class RefreshTokenRestService {
   }
 
   refresh = (username: string) => {
-    return this.http.get<{payload:{ accessToken: string }}>(`${environment.apiURL}/refresh-token`,
+    return this.http.get<{payload:{ accessToken: string }}>(
+      `${environment.apiURL}/refresh-token`,
       {headers: {"username": username}, withCredentials: true});
-
   }
 }

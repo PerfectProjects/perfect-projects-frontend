@@ -21,10 +21,14 @@ export class InterceptorService implements HttpInterceptor {
               private auth: AuthService) {
   }
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (this.excludedUrls.includes(request.url) || this.auth.getUsername() === "") {
       return next.handle(request);
     }
+    if (this.auth.getAccessToken() === "") {
+      return this.handle401Error(request, next);
+    }
+    request = this.injectAccessToken(request);
     return next.handle(request).pipe(catchError(error => {
         if (error.status === 401) {
           return this.handle401Error(request, next);
@@ -33,14 +37,22 @@ export class InterceptorService implements HttpInterceptor {
       })
     );
   }
+
   private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
     return this.refreshTokenRest.refresh(this.auth.getUsername()).pipe(
-     switchMap((response: any) => {
-      this.auth.setAuthorization(response.payload.accessToken);
-      return next.handle(request);
-    }),
+      switchMap((response: any) => {
+        this.auth.setAuthorization(response.payload.accessToken);
+        request = this.injectAccessToken(request);
+        return next.handle(request);
+      }),
       catchError(error => {
         return throwError(error);
       }));
+  }
+
+  private injectAccessToken(request: HttpRequest<any>) {
+    return request.clone({
+      headers: request.headers.set('accessToken', this.auth.getAccessToken()),
+    });
   }
 }
