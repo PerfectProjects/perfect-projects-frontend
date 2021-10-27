@@ -11,18 +11,20 @@ import {AuthService} from "./auth.service";
 })
 export class InterceptorService implements HttpInterceptor {
 
-  private readonly refreshTokenUrl = `${environment.apiURL}/refresh-token`;
+  private readonly excludedUrls = [
+    `${environment.apiURL}/refresh-token`,
+    `${environment.apiURL}/sign-in`,
+    `${environment.apiURL}/sign-up`,
+  ];
 
   constructor(private refreshTokenRest: RefreshTokenRestService,
               private auth: AuthService) {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log("interceptor called!");
-    if (request.url === this.refreshTokenUrl) {
+    if (this.excludedUrls.includes(request.url) || this.auth.getUsername() === "") {
       return next.handle(request);
     }
-
     return next.handle(request).pipe(catchError(error => {
         if (error.status === 401) {
           return this.handle401Error(request, next);
@@ -34,12 +36,10 @@ export class InterceptorService implements HttpInterceptor {
   private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
     return this.refreshTokenRest.refresh(this.auth.getUsername()).pipe(
      switchMap((response: any) => {
-       console.log(" handle401");
       this.auth.setAuthorization(response.payload.accessToken);
       return next.handle(request);
     }),
       catchError(error => {
-        console.log("refresh token expired");
         return throwError(error);
       }));
   }
