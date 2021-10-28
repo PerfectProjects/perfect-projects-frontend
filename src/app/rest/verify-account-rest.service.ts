@@ -11,7 +11,7 @@ export class VerifyAccountRestService {
 
   public sendCode = (confirmationCode: string, username: string) => {
     return this.http.post<{ success: boolean }>(
-      `${environment.apiURL}//verify-account`,
+      `${environment.apiURL}/verify-account`,
       {"confirmationCode": confirmationCode, "username": username});
   }
 }

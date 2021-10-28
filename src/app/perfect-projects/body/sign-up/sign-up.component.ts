@@ -28,7 +28,7 @@ export class SignUpComponent implements OnInit {
     }).subscribe(
       (response) => {
         if (response.success)
-          this.router.navigate(["/verify-account"]);
+          this.router.navigate(["/verify-account", this.inputUsername]);
       });
   }
 

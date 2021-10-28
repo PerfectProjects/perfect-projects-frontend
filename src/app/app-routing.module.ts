@@ -16,7 +16,7 @@ const routes: Routes = [
       {path: 'sign-in', component: SignInComponent},
       {path: 'user-profile/:userId', component: UserProfileComponent},
       {path: 'project-page/:projectId', component: ProjectPageComponent},
-      {path: 'verify-account', component: VerifyAccountComponent},
+      {path: 'verify-account/:username', component: VerifyAccountComponent},
     ]
   }
 ];

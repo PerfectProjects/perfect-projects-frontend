@@ -15,6 +15,7 @@ export class InterceptorService implements HttpInterceptor {
     `${environment.apiURL}/refresh-token`,
     `${environment.apiURL}/sign-in`,
     `${environment.apiURL}/sign-up`,
+    `${environment.apiURL}/verify-account`,
   ];
 
   constructor(private refreshTokenRest: RefreshTokenRestService,
