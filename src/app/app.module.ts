@@ -17,7 +17,7 @@ import {SignUpComponent} from './perfect-projects/body/sign-up/sign-up.component
 import {FormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ProjectPageComponent} from './perfect-projects/body/project-page/project-page.component';
-import {UserProfileComponent} from './perfect-projects/body/user-profile/user-profile.component';
+import {MyProfileComponent} from './perfect-projects/body/my-profile/my-profile.component';
 import {VerifyAccountComponent} from './perfect-projects/body/verify-account/verify-account.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
@@ -39,7 +39,7 @@ import {CookieService} from 'ngx-cookie-service';
     SignInComponent,
     SignUpComponent,
     ProjectPageComponent,
-    UserProfileComponent,
+    MyProfileComponent,
     VerifyAccountComponent,
     ToastComponent
   ],
