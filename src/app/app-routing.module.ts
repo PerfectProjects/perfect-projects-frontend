@@ -5,7 +5,7 @@ import {ProjectListComponent} from "./perfect-projects/body/project-list/project
 import {SignUpComponent} from "./perfect-projects/body/sign-up/sign-up.component";
 import {SignInComponent} from "./perfect-projects/body/sign-in/sign-in.component";
 import {MyProfileComponent} from "./perfect-projects/body/my-profile/my-profile.component";
-import {ProjectPageComponent} from "./perfect-projects/body/project-page/project-page.component";
+import {ProjectPageComponent} from "./perfect-projects/body/project/project-page/project-page.component";
 import {VerifyAccountComponent} from "./perfect-projects/body/verify-account/verify-account.component";
 
 const routes: Routes = [

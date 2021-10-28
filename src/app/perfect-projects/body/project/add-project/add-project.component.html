@@ -1,0 +1,38 @@
+<div>
+  <div>
+    <h2>Adding new project</h2>
+  </div>
+  <div>
+    <form (ngSubmit)="onSubmit()" #signInForm="ngForm">
+      <div class="form-group">
+        <label for="inputProjectTitle">Project Title</label>
+        <input type="text"
+               class="form-control"
+               id="inputProjectTitle"
+               name="inputProjectTitle"
+               placeholder="My awesome project..."
+               required
+               [(ngModel)]="inputProjectTitle"
+               #projectTitle="ngModel">
+        <small *ngIf="!projectTitle.valid && projectTitle.touched" class="form-text text-danger">
+          You must insert the title!.
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="inputDescription">Project description</label>
+        <input type="text"
+               class="form-control"
+               id="inputDescription"
+               name="inputDescription"
+               placeholder="Description..."
+               required
+               [(ngModel)]="inputDescription"
+               #description="ngModel">
+        <small *ngIf="description.touched" class="form-text text-danger">
+          Insert a description.
+        </small>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!signInForm.valid">Add Project</button>
+    </form>
+  </div>
+</div>

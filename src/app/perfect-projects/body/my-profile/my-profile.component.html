@@ -16,7 +16,7 @@
       <li *ngFor="let project of userProfileData.projects;">
         <div class="row">
           <div class="col-md-8">
-            <a [routerLink]="['/project-page',project.projectId]">{{project.projectName}}</a>
+            <a [routerLink]="['/project-page',project.id]">{{project.title}}</a>
           </div>
           <div class="col-md-4 ">
             <button class="btn btn-info col-3 m-1 text-center"><i class="bi bi-eye"></i><i class="bi bi-eye-slash"></i></button>
