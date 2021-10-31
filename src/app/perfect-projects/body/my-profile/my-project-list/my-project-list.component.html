@@ -1,4 +1,4 @@
-<div> <!--*ngIf="userProfileData.projects"-->
+<div>
   <div>
     <button class="btn btn-info" [routerLink]="['/my-profile/add-project']">Add Project</button>
   </div>
@@ -7,7 +7,7 @@
   </div>
   <br>
   <ul>
-<!--    <li *ngFor="let project of userProfileData.projects;">
+    <li *ngFor="let project of projects">
       <div class="row">
         <div class="col-md-8">
           <a [routerLink]="['/project-page',project.id]">{{project.title}}</a>
@@ -18,6 +18,6 @@
           <button class="btn btn-secondary col-3 m-1 text-center"><i class="bi bi-pen"></i></button>
         </div>
       </div>
-    </li>-->
+    </li>
   </ul>
 </div>
