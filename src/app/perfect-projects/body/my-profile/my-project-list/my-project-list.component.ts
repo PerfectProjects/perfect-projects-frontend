@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserProfileRestService} from "../../../../rest/user-profile-rest.service";
 import {ProjectData} from "../../../../models/project-data";
 
@@ -11,11 +11,22 @@ export class MyProjectListComponent implements OnInit {
 
   public projects?: ProjectData[];
 
-  constructor(private userProfileRest: UserProfileRestService) { }
+  constructor(private userProfileRest: UserProfileRestService) {
+  }
 
   ngOnInit(): void {
-    this.userProfileRest.getProjects().subscribe((response)=>{
+    this.userProfileRest.getProjects().subscribe((response) => {
       this.projects = response.projects;
+    });
+  }
+
+  onProjectDelete(projectId: string) {
+    this.userProfileRest.deleteProject(projectId).subscribe((response) => {
+      if (response.success && this.projects !== undefined) {
+        const index = this.projects.findIndex(x => x.id == projectId);
+        this.projects.splice(index, 1);
+        this.projects = [...this.projects];
+      }
     });
   }
 }

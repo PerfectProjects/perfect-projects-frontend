@@ -15,7 +15,7 @@ export class AddProjectComponent {
               private router: Router) { }
 
   public onSubmit() {
-    this.userProfileRest.addProject({description: this.inputDescription, title: this.inputProjectTitle})
+    this.userProfileRest.addProject({id: "", description: this.inputDescription, title: this.inputProjectTitle})
       .subscribe((response) => {
         if (response.success) {
           this.router.navigate(["/my-profile"]);

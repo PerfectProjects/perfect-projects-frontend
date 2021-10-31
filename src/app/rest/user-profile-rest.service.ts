@@ -22,4 +22,10 @@ export class UserProfileRestService {
       `${environment.apiURL}/user-profile/add-project`,
       {"projectData": projectData});
   }
+
+  public deleteProject = (projectId: string) => {
+    return this.http.delete<{success: boolean}>(
+      `${environment.apiURL}/user-profile/delete-project`,
+      {body: {projectId: projectId}});
+  }
 }
