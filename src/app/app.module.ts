@@ -16,7 +16,7 @@ import {SignInComponent} from './perfect-projects/body/sign-in/sign-in.component
 import {SignUpComponent} from './perfect-projects/body/sign-up/sign-up.component';
 import {FormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {ProjectPageComponent} from './perfect-projects/body/project/project-page/project-page.component';
+import {ProjectPageComponent} from './perfect-projects/body/project-page/project-page.component';
 import {MyProfileComponent} from './perfect-projects/body/my-profile/my-profile.component';
 import {VerifyAccountComponent} from './perfect-projects/body/verify-account/verify-account.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -24,7 +24,8 @@ import {ToastrModule} from "ngx-toastr";
 import {ToastComponent} from './perfect-projects/body/toast/toast.component';
 import {InterceptorService} from "./services/interceptor.service";
 import {CookieService} from 'ngx-cookie-service';
-import { AddProjectComponent } from './perfect-projects/body/project/add-project/add-project.component';
+import { AddProjectComponent } from './perfect-projects/body/my-profile/add-project/add-project.component';
+import { MyProjectListComponent } from './perfect-projects/body/my-profile/my-project-list/my-project-list.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AddProjectComponent } from './perfect-projects/body/project/add-project
     MyProfileComponent,
     VerifyAccountComponent,
     ToastComponent,
-    AddProjectComponent
+    AddProjectComponent,
+    MyProjectListComponent
   ],
   imports: [
     BrowserModule,

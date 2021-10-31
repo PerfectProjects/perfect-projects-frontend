@@ -1,0 +1,23 @@
+<div> <!--*ngIf="userProfileData.projects"-->
+  <div>
+    <button class="btn btn-info" [routerLink]="['/my-profile/add-project']">Add Project</button>
+  </div>
+  <div class="p-5">
+    <h2>My projects</h2>
+  </div>
+  <br>
+  <ul>
+<!--    <li *ngFor="let project of userProfileData.projects;">
+      <div class="row">
+        <div class="col-md-8">
+          <a [routerLink]="['/project-page',project.id]">{{project.title}}</a>
+        </div>
+        <div class="col-md-4 ">
+          <button class="btn btn-info col-3 m-1 text-center"><i class="bi bi-eye"></i><i class="bi bi-eye-slash"></i></button>
+          <button class="btn btn-danger col-3 m-1 text-center"><i class="bi bi-x-lg"></i></button>
+          <button class="btn btn-secondary col-3 m-1 text-center"><i class="bi bi-pen"></i></button>
+        </div>
+      </div>
+    </li>-->
+  </ul>
+</div>

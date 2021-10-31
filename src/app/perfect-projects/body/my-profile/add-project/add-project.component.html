@@ -1,6 +1,9 @@
 <div>
   <div>
-    <h2>Adding new project</h2>
+    <button class="btn btn-info" [routerLink]="['/my-profile']">My Projects</button>
+  </div>
+  <div class="p-5">
+    <h2>Add new project</h2>
   </div>
   <div>
     <form (ngSubmit)="onSubmit()" #signInForm="ngForm">
@@ -15,7 +18,7 @@
                [(ngModel)]="inputProjectTitle"
                #projectTitle="ngModel">
         <small *ngIf="!projectTitle.valid && projectTitle.touched" class="form-text text-danger">
-          You must insert the title!.
+          You must insert a title!
         </small>
       </div>
       <div class="form-group">
@@ -28,7 +31,7 @@
                required
                [(ngModel)]="inputDescription"
                #description="ngModel">
-        <small *ngIf="description.touched" class="form-text text-danger">
+        <small *ngIf="!description.valid && description.touched" class="form-text text-danger">
           Insert a description.
         </small>
       </div>

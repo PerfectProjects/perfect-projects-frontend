@@ -5,8 +5,10 @@ import {ProjectListComponent} from "./perfect-projects/body/project-list/project
 import {SignUpComponent} from "./perfect-projects/body/sign-up/sign-up.component";
 import {SignInComponent} from "./perfect-projects/body/sign-in/sign-in.component";
 import {MyProfileComponent} from "./perfect-projects/body/my-profile/my-profile.component";
-import {ProjectPageComponent} from "./perfect-projects/body/project/project-page/project-page.component";
+import {ProjectPageComponent} from "./perfect-projects/body/project-page/project-page.component";
 import {VerifyAccountComponent} from "./perfect-projects/body/verify-account/verify-account.component";
+import {AddProjectComponent} from "./perfect-projects/body/my-profile/add-project/add-project.component";
+import {MyProjectListComponent} from "./perfect-projects/body/my-profile/my-project-list/my-project-list.component";
 
 const routes: Routes = [
   {
@@ -14,7 +16,13 @@ const routes: Routes = [
       {path: '', component: ProjectListComponent},
       {path: 'sign-up', component: SignUpComponent},
       {path: 'sign-in', component: SignInComponent},
-      {path: 'my-profile', component: MyProfileComponent},
+      {
+        path: 'my-profile', component: MyProfileComponent,
+        children:[
+          {path: '', component: MyProjectListComponent},
+          {path: 'add-project', component: AddProjectComponent}
+        ]
+      },
       {path: 'project-page/:projectId', component: ProjectPageComponent},
       {path: 'verify-account/:username', component: VerifyAccountComponent},
     ]
