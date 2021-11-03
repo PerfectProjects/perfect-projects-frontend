@@ -26,6 +26,7 @@ import {InterceptorService} from "./services/interceptor.service";
 import {CookieService} from 'ngx-cookie-service';
 import { AddProjectComponent } from './perfect-projects/body/my-profile/add-project/add-project.component';
 import { MyProjectListComponent } from './perfect-projects/body/my-profile/my-project-list/my-project-list.component';
+import {QuillModule} from "ngx-quill";
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { MyProjectListComponent } from './perfect-projects/body/my-profile/my-pr
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       toastComponent: ToastComponent,
-    })
+    }),
+    QuillModule.forRoot()
   ],
   providers: [
     [CookieService],
