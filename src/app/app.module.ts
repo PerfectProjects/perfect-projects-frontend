@@ -24,9 +24,12 @@ import {ToastrModule} from "ngx-toastr";
 import {ToastComponent} from './perfect-projects/body/toast/toast.component';
 import {InterceptorService} from "./services/interceptor.service";
 import {CookieService} from 'ngx-cookie-service';
-import { AddProjectComponent } from './perfect-projects/body/my-profile/add-project/add-project.component';
-import { MyProjectListComponent } from './perfect-projects/body/my-profile/my-project-list/my-project-list.component';
+import {AddProjectComponent} from './perfect-projects/body/my-profile/add-project/add-project.component';
+import {MyProjectListComponent} from './perfect-projects/body/my-profile/my-project-list/my-project-list.component';
 import {QuillModule} from "ngx-quill";
+
+
+
 
 @NgModule({
   declarations: [
@@ -63,8 +66,8 @@ import {QuillModule} from "ngx-quill";
   providers: [
     [CookieService],
     {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
-    entryComponents: [ToastComponent],
-    bootstrap: [AppComponent],
+  entryComponents: [ToastComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 }

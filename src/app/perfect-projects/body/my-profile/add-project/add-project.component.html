@@ -21,7 +21,7 @@
           You must insert a title!
         </small>
       </div>
-      <quill-editor (onEditorChanged)="onEditorChange($event)"></quill-editor>
+      <quill-editor (onEditorChanged)="onEditorChange($event)" [modules]="modules"></quill-editor>
       <br>
       <button type="submit" class="btn btn-primary" [disabled]="!signInForm.valid">Add Project</button>
     </form>
