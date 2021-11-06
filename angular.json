@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "quill-blot-formatter"
+            ],
             "outputPath": "dist/perfect-projects-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -30,7 +33,6 @@
               "./node_modules/quill/dist/quill.core.css",
               "./node_modules/quill/dist/quill.bubble.css",
               "./node_modules/quill/dist/quill.snow.css",
-              "./node_modules/quill-mention/dist/quill.mention.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
               "node_modules/ngx-toastr/toastr.css"

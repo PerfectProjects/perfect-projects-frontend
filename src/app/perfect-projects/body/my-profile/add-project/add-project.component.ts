@@ -3,7 +3,7 @@ import {UserProfileRestService} from "../../../../rest/user-profile-rest.service
 import {Router} from "@angular/router";
 import {EditorChangeContent, EditorChangeSelection} from "ngx-quill";
 import Quill from 'quill';
-import BlotFormatter, {ResizeAction,DeleteAction,AlignAction,ImageSpec} from 'quill-blot-formatter';
+import BlotFormatter, {DeleteAction, ImageSpec, ResizeAction} from 'quill-blot-formatter';
 
 Quill.register('modules/blotFormatter', BlotFormatter);
 
@@ -21,7 +21,7 @@ class CustomImageSpec extends ImageSpec {
 export class AddProjectComponent {
   inputProjectTitle: any;
   inputDescription: any;
-  content: any;
+  content: string = "";
   modules = {}
 
   constructor(private userProfileRest: UserProfileRestService,
