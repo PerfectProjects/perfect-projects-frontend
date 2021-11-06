@@ -1,1 +1,9 @@
-<p>project-page works! project id:  {{projectId}}</p>
+<div *ngIf="project" class="container">
+
+  <div class="text-center">
+    <h1>{{project.title}}</h1>
+  </div>
+  <hr>
+  <br>
+  <div [innerHTML]="project.description"></div>
+</div>
