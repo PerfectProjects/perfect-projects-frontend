@@ -4,6 +4,8 @@ import {Router} from "@angular/router";
 import {EditorChangeContent, EditorChangeSelection} from "ngx-quill";
 import Quill from 'quill';
 import BlotFormatter, {DeleteAction, ImageSpec, ResizeAction} from 'quill-blot-formatter';
+import {ToastService} from "../../../../services/toast.service";
+import {ToastState} from "../../../../models/toast-state";
 
 Quill.register('modules/blotFormatter', BlotFormatter);
 
@@ -19,13 +21,13 @@ class CustomImageSpec extends ImageSpec {
   styleUrls: ['./add-project.component.css']
 })
 export class AddProjectComponent {
-  inputProjectTitle: any;
-  inputDescription: any;
-  content: string = "";
+  inputProjectTitle: string = "";
+  inputProjectDescription: string = "";
   modules = {}
 
   constructor(private userProfileRest: UserProfileRestService,
-              private router: Router) {
+              private router: Router,
+              private toast: ToastService) {
     this.modules = {
       blotFormatter: {
         specs: [CustomImageSpec]
@@ -34,10 +36,12 @@ export class AddProjectComponent {
   }
 
   public onSubmit() {
-    this.userProfileRest.addProject({id: "", description: this.inputDescription, title: this.inputProjectTitle})
+    this.userProfileRest.addProject({id: "", description: this.inputProjectDescription, title: this.inputProjectTitle})
       .subscribe((response) => {
         if (response.success) {
-          this.router.navigate(["/my-profile"]);
+          this.toast.showMessage(`${this.inputProjectTitle} has been added`, ToastState.SUCCESS);
+          this.router.navigate(["/my-profile"]).then(x => {
+          });
         }
       });
     return;
@@ -45,7 +49,8 @@ export class AddProjectComponent {
 
   public onEditorChange(event: EditorChangeContent | EditorChangeSelection) {
     if (event.event === "text-change") {
-      this.content = event.editor.root.innerHTML;
+      this.inputProjectDescription = btoa(event.editor.root.innerHTML);
+      console.log(this.inputProjectDescription);
     }
   }
 }
