@@ -1,9 +1,9 @@
 <div>
   <div>
-    <button class="btn btn-info" [routerLink]="['/my-profile/add-project']">Add Project</button>
+    <button class="btn btn-info col-12" [routerLink]="['/my-profile/add-project']">Add Project</button>
   </div>
-  <div class="p-5">
-    <h2>My projects</h2>
+  <div class="text-left text-info pt-3">
+    <h4>MY PROJECTS</h4>
   </div>
   <br>
   <div *ngIf="projects; else loadingProjects">
@@ -11,12 +11,12 @@
       <li *ngFor="let project of projects">
         <div class="row">
           <div class="col-md-8">
-            <a [routerLink]="['/project',project.id]">{{project.title}}</a>
+            <a [routerLink]="['/project',project.id]"><span>{{project.title}}</span></a>
           </div>
           <div class="col-md-4 ">
             <button class="btn btn-info col-3 m-1 text-center">
               <i class="bi bi-eye"></i>
-              <i class="bi bi-eye-slash"></i>
+<!--              <i class="bi bi-eye-slash"></i>-->
             </button>
             <button class="btn btn-danger col-3 m-1 text-center" (click)="onProjectDelete(project.id)">
               <i class="bi bi-x-lg"></i>
