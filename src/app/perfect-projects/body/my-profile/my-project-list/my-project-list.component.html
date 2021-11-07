@@ -11,7 +11,11 @@
       <li *ngFor="let project of projects">
         <div class="row">
           <div class="col-md-8">
-            <a [routerLink]="['/project',project.id]"><span>{{project.title}}</span></a>
+            <a [routerLink]="['/project',project.id]">
+              <div class="text-left bg-light d-flex p-2">
+                {{project.title}}
+              </div>
+            </a>
           </div>
           <div class="col-md-4 ">
             <button class="btn btn-info col-3 m-1 text-center">
