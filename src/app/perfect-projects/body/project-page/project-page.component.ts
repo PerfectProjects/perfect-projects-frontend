@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {ProjectRestService} from "../../../rest/project-rest.service";
+import {ProjectApiCallerService} from "../../../api-caller/project-api-caller.service";
 import {ProjectData} from "../../../models/project-data";
 
 @Component({
@@ -13,7 +13,7 @@ export class ProjectPageComponent implements OnInit {
   public project : ProjectData | undefined;
 
   constructor(private route: ActivatedRoute,
-              private projectRest: ProjectRestService) {
+              private projectRest: ProjectApiCallerService) {
   }
 
   ngOnInit(): void {

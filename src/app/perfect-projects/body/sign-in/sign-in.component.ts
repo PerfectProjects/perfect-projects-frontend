@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {SignInRestService} from "../../../rest/sign-in-rest.service";
 import {AuthService} from "../../../services/auth.service";
-import {RefreshTokenRestService} from "../../../rest/refresh-token-rest.service";
 import {Router} from "@angular/router";
+import {AccessApiCallerService} from "../../../api-caller/access-api-caller.service";
 
 @Component({
   selector: 'app-sign-in',
@@ -13,8 +12,7 @@ export class SignInComponent implements OnInit {
   inputUsername: any;
   inputPassword: any;
 
-  constructor(private signIn: SignInRestService,
-              private refresh: RefreshTokenRestService,
+  constructor(private accessApiCaller: AccessApiCallerService,
               private auth: AuthService,
               private router: Router) {
   }
@@ -23,7 +21,7 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit() {
-    this.signIn.signIn({
+    this.accessApiCaller.signIn({
       username: this.inputUsername,
       password: this.inputPassword
     }).subscribe(

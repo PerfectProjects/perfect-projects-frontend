@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ToastState} from "../../../models/toast-state";
+import {ToastState} from "../../../enums/toast-state";
 
 @Component({
   selector: 'app-toast',

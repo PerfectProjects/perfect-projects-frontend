@@ -3,8 +3,8 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/com
 import {Observable, throwError} from "rxjs";
 import {environment} from "../../environments/environment";
 import {catchError, switchMap} from "rxjs/operators";
-import {RefreshTokenRestService} from "../rest/refresh-token-rest.service";
 import {AuthService} from "./auth.service";
+import {AccessApiCallerService} from "../api-caller/access-api-caller.service";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class InterceptorService implements HttpInterceptor {
     `${environment.apiURL}/verify-account`,
   ];
 
-  constructor(private refreshTokenRest: RefreshTokenRestService,
+  constructor(private accessApiCaller: AccessApiCallerService,
               private auth: AuthService) {
   }
 
@@ -40,7 +40,7 @@ export class InterceptorService implements HttpInterceptor {
   }
 
   private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
-    return this.refreshTokenRest.refresh(this.auth.getUsername()).pipe(
+    return this.accessApiCaller.refreshToken(this.auth.getUsername()).pipe(
       switchMap((response: any) => {
         this.auth.setAuthorization(response.payload.accessToken);
         request = this.injectAccessToken(request);

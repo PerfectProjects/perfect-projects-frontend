@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {SignUpRestService} from "../../../rest/sign-up-rest.service";
 import {Router} from "@angular/router";
+import {AccessApiCallerService} from "../../../api-caller/access-api-caller.service";
 
 @Component({
   selector: 'app-sign-up',
@@ -13,7 +13,7 @@ export class SignUpComponent implements OnInit {
   inputPassword: any;
   inputRepeatPassword: any;
 
-  constructor(private signUpService: SignUpRestService,
+  constructor(private accessApiCaller: AccessApiCallerService,
               private router: Router) {
   }
 
@@ -21,7 +21,7 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    this.signUpService.createAccount({
+    this.accessApiCaller.signUp({
       email: this.inputEmail,
       password: this.inputPassword,
       username: this.inputUsername

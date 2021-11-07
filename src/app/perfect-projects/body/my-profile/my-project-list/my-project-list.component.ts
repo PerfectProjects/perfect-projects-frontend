@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {UserProfileRestService} from "../../../../rest/user-profile-rest.service";
+import {UserProfileApiCallerService} from "../../../../api-caller/user-profile-api-caller.service";
 import {ProjectData} from "../../../../models/project-data";
+import {ProjectApiCallerService} from "../../../../api-caller/project-api-caller.service";
 
 @Component({
   selector: 'app-my-project-list',
@@ -11,17 +12,18 @@ export class MyProjectListComponent implements OnInit {
 
   public projects?: ProjectData[];
 
-  constructor(private userProfileRest: UserProfileRestService) {
+  constructor(private userProfileApiCaller: UserProfileApiCallerService,
+              private projectApiCaller: ProjectApiCallerService) {
   }
 
   ngOnInit(): void {
-    this.userProfileRest.getProjects().subscribe((response) => {
+    this.userProfileApiCaller.getProjects().subscribe((response) => {
       this.projects = response.projects;
     });
   }
 
   onProjectDelete(projectId: string) {
-    this.userProfileRest.deleteProject(projectId).subscribe((response) => {
+    this.projectApiCaller.deleteProject(projectId).subscribe((response) => {
       if (response.success && this.projects !== undefined) {
         const index = this.projects.findIndex(x => x.id == projectId);
         this.projects.splice(index, 1);

@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {VerifyAccountRestService} from "../../../rest/verify-account-rest.service";
 import {ToastService} from "../../../services/toast.service";
 import {AuthService} from "../../../services/auth.service";
-import {ToastState} from "../../../models/toast-state";
+import {ToastState} from "../../../enums/toast-state";
 import {ActivatedRoute} from "@angular/router";
+import {AccessApiCallerService} from "../../../api-caller/access-api-caller.service";
 
 @Component({
   selector: 'app-verify-account',
@@ -15,7 +15,7 @@ export class VerifyAccountComponent implements OnInit {
   inputConfirmationCode: any;
   private username: string = "";
 
-  constructor(private verifyAccount: VerifyAccountRestService,
+  constructor(private accessApiCaller: AccessApiCallerService,
               private toast: ToastService,
               private auth: AuthService,
               private route: ActivatedRoute,) {
@@ -30,7 +30,7 @@ export class VerifyAccountComponent implements OnInit {
 
   onSubmit() {
     if (this.username !== "")
-    this.verifyAccount.sendCode(this.inputConfirmationCode, this.username)
+    this.accessApiCaller.sendCode(this.inputConfirmationCode, this.username)
       .subscribe((response) => {
         if (response.success) {
           this.toast.showMessage("Account verified!", ToastState.SUCCESS);
