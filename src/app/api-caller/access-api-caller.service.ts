@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {ProjectData} from "../models/project-data";
 import {SignInUser} from "../models/sign-in-user";
 import {SignUpUser} from "../models/sign-up-user";
 
@@ -37,5 +36,10 @@ export class AccessApiCallerService {
     return this.http.post<{ success: boolean }>(
       `${environment.apiURL}/access/verify-account`,
       {"confirmationCode": confirmationCode, "username": username});
+  }
+
+  public signOut() {
+    return this.http.post<{ success: boolean }>(
+      `${environment.apiURL}/access/sign-out`,{});
   }
 }

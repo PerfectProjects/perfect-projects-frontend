@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
+import {AccessApiCallerService} from "../../api-caller/access-api-caller.service";
+import {ToastService} from "../../services/toast.service";
+import {ToastState} from "../../enums/toast-state";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +12,10 @@ import {AuthService} from "../../services/auth.service";
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService,
+              private accessApiCaller: AccessApiCallerService,
+              private toast: ToastService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -16,5 +23,16 @@ export class NavbarComponent implements OnInit {
 
   public getUsername() {
     return this.auth.getUsername();
+  }
+
+  public onSignOut(){
+    this.accessApiCaller.signOut().subscribe((response)=>{
+      console.log(response);
+        if (response.success){
+          this.toast.showMessage("You were signed out", ToastState.INFO);
+          this.auth.cleanAuthorization();
+          this.router.navigate(["/"]);
+        }
+    });
   }
 }

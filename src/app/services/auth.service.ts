@@ -20,8 +20,13 @@ export class AuthService {
   }
 
   public getUsername() {
-    if(this.cookie.check("username"))
+    if (this.cookie.check("username"))
       return atob(this.cookie.get("username"));
     return "";
+  }
+
+  public cleanAuthorization() {
+    this.cookie.delete("username","/", ".perfect-projects.com", true, "None");
+    this.accessToken = "";
   }
 }

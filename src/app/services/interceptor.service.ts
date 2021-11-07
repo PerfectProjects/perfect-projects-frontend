@@ -5,6 +5,7 @@ import {environment} from "../../environments/environment";
 import {catchError, switchMap} from "rxjs/operators";
 import {AuthService} from "./auth.service";
 import {AccessApiCallerService} from "../api-caller/access-api-caller.service";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class InterceptorService implements HttpInterceptor {
   ];
 
   constructor(private accessApiCaller: AccessApiCallerService,
-              private auth: AuthService) {
+              private auth: AuthService,
+              private router: Router) {
   }
 
   public intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -47,6 +49,8 @@ export class InterceptorService implements HttpInterceptor {
         return next.handle(request);
       }),
       catchError(error => {
+        this.auth.cleanAuthorization();
+        this.router.navigate(["/"]);
         return throwError(error);
       }));
   }
