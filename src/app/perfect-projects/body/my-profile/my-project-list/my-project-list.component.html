@@ -11,7 +11,7 @@
       <li *ngFor="let project of projects">
         <div class="row">
           <div class="col-md-8">
-            <a [routerLink]="['/project-page',project.id]">{{project.title}}</a>
+            <a [routerLink]="['/project',project.id]">{{project.title}}</a>
           </div>
           <div class="col-md-4 ">
             <button class="btn btn-info col-3 m-1 text-center">

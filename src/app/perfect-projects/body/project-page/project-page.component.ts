@@ -9,7 +9,9 @@ import {ProjectData} from "../../../models/project-data";
   styleUrls: ['./project-page.component.css']
 })
 export class ProjectPageComponent implements OnInit {
+
   public project : ProjectData | undefined;
+
   constructor(private route: ActivatedRoute,
               private projectRest: ProjectRestService) {
   }
@@ -19,10 +21,14 @@ export class ProjectPageComponent implements OnInit {
       const projectId = paramMap.get("projectId");
       if (projectId != null) {
         this.projectRest.getProject(projectId).subscribe((response)=>{
-          this.project = {
-            id: response.id,
-            title: response.title,
-            description: btoa(response.description)};
+           if (response.description) {
+             this.project = {
+               id: response.id,
+               title: response.title,
+               author: response.author,
+               description: atob(response.description)
+             };
+           }
         });
       }
     });

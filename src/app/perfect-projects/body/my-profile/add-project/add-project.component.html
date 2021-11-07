@@ -6,7 +6,7 @@
     <h2>Add new project</h2>
   </div>
   <div>
-    <form (ngSubmit)="onSubmit()" #signInForm="ngForm">
+    <form (ngSubmit)="onSubmit(quillEditorComponent.quillEditor)" #signInForm="ngForm">
       <div class="form-group">
         <label for="inputProjectTitle">Project Title</label>
         <input type="text"
@@ -21,11 +21,9 @@
           You must insert a title!
         </small>
       </div>
-      <quill-editor [styles]="{height: '450px'}" (onEditorChanged)="onEditorChange($event)" [modules]="modules"></quill-editor>
+      <quill-editor #quillEditorComponent [styles]="{height: '450px'}" [modules]="modules"></quill-editor>
       <br>
       <button type="submit" class="btn btn-primary" [disabled]="!signInForm.valid">Add Project</button>
     </form>
   </div>
-  <br>
-    <quill-view [content]="inputProjectDescription" format="html" theme="snow"></quill-view>
 </div>

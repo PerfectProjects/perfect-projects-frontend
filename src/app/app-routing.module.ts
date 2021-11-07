@@ -23,7 +23,7 @@ const routes: Routes = [
           {path: 'add-project', component: AddProjectComponent}
         ]
       },
-      {path: 'project-page/:projectId', component: ProjectPageComponent},
+      {path: 'project/:projectId', component: ProjectPageComponent},
       {path: 'verify-account/:username', component: VerifyAccountComponent},
     ]
   }
