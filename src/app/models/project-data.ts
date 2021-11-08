@@ -1,6 +1,8 @@
-export interface ProjectData {
-  id: string,
-  title: string,
-  author: string,
-  description?: string
+import {BasicProjectData} from "./basic-project-data";
+
+export interface ProjectData extends BasicProjectData{
+  visible: boolean,
+  briefDescription: string,
+  mainPhoto: string,
+  description: string,
 }

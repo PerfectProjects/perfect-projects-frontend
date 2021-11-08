@@ -10,7 +10,7 @@ import {ProjectData} from "../../../models/project-data";
 })
 export class ProjectPageComponent implements OnInit {
 
-  public project : ProjectData | undefined;
+  public project: ProjectData | undefined;
 
   constructor(private route: ActivatedRoute,
               private projectRest: ProjectApiCallerService) {
@@ -20,15 +20,21 @@ export class ProjectPageComponent implements OnInit {
     this.route.paramMap.subscribe(paramMap => {
       const projectId = paramMap.get("projectId");
       if (projectId != null) {
-        this.projectRest.getProject(projectId).subscribe((response)=>{
-           if (response.description) {
-             this.project = {
-               id: response.id,
-               title: response.title,
-               author: response.author,
-               description: atob(response.description)
-             };
-           }
+        this.projectRest.getProject(projectId).subscribe((response) => {
+          if (response.description) {
+            if (!response.mainPhoto)
+              response.mainPhoto = "";
+
+            this.project = {
+              id: response.id,
+              title: response.title,
+              author: response.author,
+              description: atob(response.description),
+              briefDescription: atob(response.briefDescription),
+              mainPhoto: atob(response.mainPhoto),
+              visible: response.visible
+            };
+          }
         });
       }
     });

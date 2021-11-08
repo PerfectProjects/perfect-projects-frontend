@@ -26,6 +26,7 @@ export class AuthService {
   }
 
   public cleanAuthorization() {
+
     this.cookie.delete("username","/", ".perfect-projects.com", true, "None");
     this.accessToken = "";
   }

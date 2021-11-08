@@ -13,10 +13,10 @@ import {Router} from "@angular/router";
 export class InterceptorService implements HttpInterceptor {
 
   private readonly excludedUrls = [
-    `${environment.apiURL}/refresh-token`,
-    `${environment.apiURL}/sign-in`,
-    `${environment.apiURL}/sign-up`,
-    `${environment.apiURL}/verify-account`,
+    `${environment.apiURL}/access/refresh-token`,
+    `${environment.apiURL}/access/sign-in`,
+    `${environment.apiURL}/access/sign-up`,
+    `${environment.apiURL}/access/verify-account`,
   ];
 
   constructor(private accessApiCaller: AccessApiCallerService,

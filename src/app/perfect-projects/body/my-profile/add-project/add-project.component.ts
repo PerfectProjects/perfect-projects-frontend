@@ -7,6 +7,7 @@ import {ToastService} from "../../../../services/toast.service";
 import {ToastState} from "../../../../enums/toast-state";
 import {AuthService} from "../../../../services/auth.service";
 import {ProjectApiCallerService} from "../../../../api-caller/project-api-caller.service";
+import {ProjectData} from "../../../../models/project-data";
 
 Quill.register('modules/blotFormatter', BlotFormatter);
 
@@ -39,11 +40,14 @@ export class AddProjectComponent {
 
   public onSubmit(quillEditor: Quill) {
     console.log(quillEditor.root.innerHTML);
-    const projectData = {
+    const projectData: ProjectData = {
       id: "",
       title: this.inputProjectTitle,
       author: this.auth.getUsername(),
-      description: btoa(quillEditor.root.innerHTML)
+      description: btoa(quillEditor.root.innerHTML),
+      briefDescription: "",
+      visible: false,
+      mainPhoto: ""
     };
     this.projectApiCaller.addProject(projectData)
       .subscribe((response) => {

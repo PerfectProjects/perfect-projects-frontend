@@ -1,5 +1,5 @@
-import {ProjectData} from "./project-data";
+import {BasicProjectData} from "./basic-project-data";
 
 export interface UserProfileData {
-  projects: ProjectData[],
+  projects: BasicProjectData[],
 }
