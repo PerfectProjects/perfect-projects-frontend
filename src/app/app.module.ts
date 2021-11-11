@@ -27,7 +27,7 @@ import {CookieService} from 'ngx-cookie-service';
 import {AddProjectComponent} from './perfect-projects/body/my-profile/add-project/add-project.component';
 import {MyProjectListComponent} from './perfect-projects/body/my-profile/my-project-list/my-project-list.component';
 import {QuillModule} from "ngx-quill";
-
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 
@@ -50,6 +50,7 @@ import {QuillModule} from "ngx-quill";
     ToastComponent,
     AddProjectComponent,
     MyProjectListComponent
+
   ],
   imports: [
     BrowserModule,
@@ -61,7 +62,8 @@ import {QuillModule} from "ngx-quill";
     ToastrModule.forRoot({
       toastComponent: ToastComponent,
     }),
-    QuillModule.forRoot()
+    QuillModule.forRoot(),
+    ImageCropperModule
   ],
   providers: [
     [CookieService],

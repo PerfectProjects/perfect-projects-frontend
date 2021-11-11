@@ -1,5 +1,4 @@
-import {Component} from '@angular/core';
-import {UserProfileApiCallerService} from "../../../../api-caller/user-profile-api-caller.service";
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import Quill from 'quill';
 import BlotFormatter, {DeleteAction, ImageSpec, ResizeAction} from 'quill-blot-formatter';
@@ -8,6 +7,7 @@ import {ToastState} from "../../../../enums/toast-state";
 import {AuthService} from "../../../../services/auth.service";
 import {ProjectApiCallerService} from "../../../../api-caller/project-api-caller.service";
 import {ProjectData} from "../../../../models/project-data";
+import {ImageCroppedEvent} from 'ngx-image-cropper';
 
 Quill.register('modules/blotFormatter', BlotFormatter);
 
@@ -22,10 +22,15 @@ class CustomImageSpec extends ImageSpec {
   templateUrl: './add-project.component.html',
   styleUrls: ['./add-project.component.css']
 })
-export class AddProjectComponent {
+export class AddProjectComponent implements OnInit{
 
   inputProjectTitle: string = "";
+  inputBriefDescription: string = "";
+  inputPicture: string = "";
   modules = {}
+
+  imageChangedEvent: any = "";
+  croppedImage: any = "";
 
   constructor(private projectApiCaller: ProjectApiCallerService,
               private router: Router,
@@ -39,24 +44,33 @@ export class AddProjectComponent {
   }
 
   public onSubmit(quillEditor: Quill) {
-    console.log(quillEditor.root.innerHTML);
     const projectData: ProjectData = {
       id: "",
       title: this.inputProjectTitle,
       author: this.auth.getUsername(),
       description: btoa(quillEditor.root.innerHTML),
-      briefDescription: "",
+      briefDescription: this.inputBriefDescription,
       visible: false,
-      mainPhoto: ""
+      mainPhoto: this.croppedImage
     };
     this.projectApiCaller.addProject(projectData)
       .subscribe((response) => {
         if (response.success) {
           this.toast.showMessage(`${this.inputProjectTitle} has been added!`, ToastState.SUCCESS);
-          this.router.navigate(["/my-profile"]).then(x => {
-          });
+          this.router.navigate(["/my-profile"]).then();
         }
       });
     return;
+  }
+
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+  }
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+  }
+
+  public ngOnInit(): void {
+    this.croppedImage = "";
   }
 }

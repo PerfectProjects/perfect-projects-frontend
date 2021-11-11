@@ -21,6 +21,46 @@
         </small>
       </div>
       <div class="form-group">
+        <label for="inputBriefDescription">Brief Description</label>
+        <textarea type="text"
+                  class="form-control"
+                  id="inputBriefDescription"
+                  name="inputBriefDescription"
+                  placeholder="This masterpiece..."
+                  required
+                  minlength="32"
+                  maxlength="256"
+                  rows="4"
+                  [(ngModel)]="inputBriefDescription"
+                  #BriefDescription="ngModel">
+          </textarea>
+        <small *ngIf="!BriefDescription.valid && BriefDescription.touched" class="form-text text-danger">
+          A brief description is required, 32-256 signs.
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label class="btn btn-info"> Upload Picture
+          <input hidden type="file" (change)="fileChangeEvent($event)"/>
+        </label>
+        <div class="d-flex justify-content-center">
+          <div class="col-md-6 ">
+            <image-cropper
+              [imageChangedEvent]="imageChangedEvent"
+              [maintainAspectRatio]="true"
+              [aspectRatio]="4 / 4"
+              [resizeToWidth]="256"
+              (imageCropped)="imageCropped($event)">
+            </image-cropper>
+            <div class="d-flex justify-content-center">
+              <div *ngIf="croppedImage !== ''">
+                <img [src]="croppedImage " alt="Main picture"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
         <label for="inputProjectDescription">Project Description</label>
         <quill-editor
           id="inputProjectDescription"
