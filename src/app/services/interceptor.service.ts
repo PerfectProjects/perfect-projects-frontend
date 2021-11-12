@@ -17,6 +17,7 @@ export class InterceptorService implements HttpInterceptor {
     `${environment.apiURL}/access/sign-in`,
     `${environment.apiURL}/access/sign-up`,
     `${environment.apiURL}/access/verify-account`,
+    `${environment.apiURL}/projects`,
   ];
 
   constructor(private accessApiCaller: AccessApiCallerService,
@@ -49,8 +50,8 @@ export class InterceptorService implements HttpInterceptor {
         return next.handle(request);
       }),
       catchError(error => {
-        // this.auth.cleanAuthorization();
-        // this.router.navigate(["/"]);
+         this.auth.cleanAuthorization();
+         this.router.navigate(["/"]);
         return throwError(error);
       }));
   }

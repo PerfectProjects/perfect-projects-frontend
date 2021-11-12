@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectApiCallerService} from "../../../api-caller/project-api-caller.service";
+import {BasicProjectData} from "../../../models/basic-project-data";
 
 @Component({
   selector: 'app-project-list',
@@ -8,14 +9,16 @@ import {ProjectApiCallerService} from "../../../api-caller/project-api-caller.se
 })
 export class ProjectListComponent implements OnInit {
 
-  pictures = ["game", "picture", "room"];
+  projects: BasicProjectData[] = [];
 
   constructor(private projectApiCaller: ProjectApiCallerService) {
   }
 
   ngOnInit(): void {
 
-    this.projectApiCaller
+    this.projectApiCaller.getProjectPage(1).subscribe((response) => {
+      this.projects = response;
+    });
   }
 
 }

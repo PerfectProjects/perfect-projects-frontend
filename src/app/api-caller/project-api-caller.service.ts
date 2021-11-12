@@ -30,8 +30,9 @@ export class ProjectApiCallerService {
         {params:{id: projectId}});
     }
 
-  public getProjectPage(pageNumber: number) {
+  public getProjectPage(page: number) {
     return this.http.get<BasicProjectData[]>(
-      `${environment.apiURL}/project?page=${pageNumber}`);
+      `${environment.apiURL}/projects`,
+      {params:{page: page}});
   }
 }

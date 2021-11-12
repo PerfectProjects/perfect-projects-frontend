@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {BasicProjectData} from "../../../../models/basic-project-data";
 
 @Component({
   selector: 'app-project',
@@ -7,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ProjectComponent implements OnInit {
 
-  @Input("picture") picture = "";
+  @Input() project: any;
 
   constructor() {
   }
