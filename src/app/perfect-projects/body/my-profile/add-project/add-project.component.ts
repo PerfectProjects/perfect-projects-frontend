@@ -48,10 +48,10 @@ export class AddProjectComponent implements OnInit{
       id: "",
       title: this.inputProjectTitle,
       author: this.auth.getUsername(),
-      description: btoa(quillEditor.root.innerHTML),
-      briefDescription: this.inputBriefDescription,
       visible: false,
-      mainPhoto: this.croppedImage
+      description: btoa(quillEditor.root.innerHTML),
+      briefDescription: btoa(this.inputBriefDescription),
+      mainPicture: btoa(this.croppedImage)
     };
     this.projectApiCaller.addProject(projectData)
       .subscribe((response) => {

@@ -17,10 +17,14 @@ export class MyProjectListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("response");
     this.userProfileApiCaller.getProjects().subscribe((response) => {
-      console.log(response);
-      this.projects = response.projects;
+      if (response.projects !== undefined) {
+        this.projects = [...response.projects];
+        this.projects.forEach(project => {
+          project.mainPicture = atob(project.mainPicture);
+          project.briefDescription = atob(project.briefDescription);
+        });
+      }
     });
   }
 

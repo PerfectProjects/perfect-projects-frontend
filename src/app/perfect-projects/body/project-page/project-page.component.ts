@@ -22,8 +22,8 @@ export class ProjectPageComponent implements OnInit {
       if (projectId != null) {
         this.projectRest.getProject(projectId).subscribe((response) => {
           if (response.description) {
-            if (!response.mainPhoto)
-              response.mainPhoto = "";
+            if (!response.mainPicture)
+              response.mainPicture = "";
 
             this.project = {
               id: response.id,
@@ -31,7 +31,7 @@ export class ProjectPageComponent implements OnInit {
               author: response.author,
               description: atob(response.description),
               briefDescription: atob(response.briefDescription),
-              mainPhoto: atob(response.mainPhoto),
+              mainPicture: atob(response.mainPicture),
               visible: response.visible
             };
           }

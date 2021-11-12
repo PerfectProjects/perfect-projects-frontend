@@ -4,5 +4,5 @@ export interface BasicProjectData {
   author: string,
   visible: boolean,
   briefDescription: string,
-  mainPhoto: string,
+  mainPicture: string,
 }

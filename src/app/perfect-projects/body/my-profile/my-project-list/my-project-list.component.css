@@ -7,3 +7,7 @@ a {
   text-decoration: none;
 }
 
+
+p {
+  overflow-wrap: break-word;
+}

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ProjectApiCallerService} from "../../../api-caller/project-api-caller.service";
 
 @Component({
   selector: 'app-project-list',
@@ -9,10 +10,12 @@ export class ProjectListComponent implements OnInit {
 
   pictures = ["game", "picture", "room"];
 
-  constructor() {
+  constructor(private projectApiCaller: ProjectApiCallerService) {
   }
 
   ngOnInit(): void {
+
+    this.projectApiCaller
   }
 
 }
