@@ -5,4 +5,5 @@ export interface BasicProjectData {
   visible: boolean,
   briefDescription: string,
   mainPicture: string,
+  timestamp: number,
 }

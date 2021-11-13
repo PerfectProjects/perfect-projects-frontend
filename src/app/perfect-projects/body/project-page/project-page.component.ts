@@ -32,7 +32,8 @@ export class ProjectPageComponent implements OnInit {
               description: atob(response.description),
               briefDescription: atob(response.briefDescription),
               mainPicture: atob(response.mainPicture),
-              visible: response.visible
+              visible: response.visible,
+              timestamp: response.timestamp
             };
           }
         });

@@ -36,4 +36,10 @@ export class ProjectApiCallerService {
       `${environment.apiURL}/projects`,
       {params:{page: page}});
   }
+
+  public updateProject(projectData: ProjectData) {
+    return this.http.post<{success: boolean}>(
+      `${environment.apiURL}/project/update`,
+      {"projectData": projectData});
+  }
 }
