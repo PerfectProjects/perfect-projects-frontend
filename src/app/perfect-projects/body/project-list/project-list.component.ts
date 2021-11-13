@@ -15,9 +15,13 @@ export class ProjectListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.projectApiCaller.getProjectPage(1).subscribe((response) => {
-      this.projects = response;
+      console.log(response);
+      this.projects = response.projects;
+      this.projects.forEach(project => {
+        project.mainPicture = atob(project.mainPicture);
+        project.briefDescription = atob(project.briefDescription);
+      });
     });
   }
 

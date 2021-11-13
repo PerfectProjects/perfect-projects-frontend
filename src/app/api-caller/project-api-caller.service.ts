@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {ProjectData} from "../models/project-data";
 import {BasicProjectData} from "../models/basic-project-data";
+import {ProjectPageData} from "../models/project-page-data";
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,7 @@ export class ProjectApiCallerService {
     }
 
   public getProjectPage(page: number) {
-    return this.http.get<BasicProjectData[]>(
+    return this.http.get<ProjectPageData>(
       `${environment.apiURL}/projects`,
       {params:{page: page}});
   }
