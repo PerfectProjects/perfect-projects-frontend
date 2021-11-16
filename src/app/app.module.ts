@@ -28,6 +28,7 @@ import {AddProjectComponent} from './perfect-projects/body/my-profile/add-projec
 import {MyProjectListComponent} from './perfect-projects/body/my-profile/my-project-list/my-project-list.component';
 import {QuillModule} from "ngx-quill";
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { EditProjectComponent } from './perfect-projects/body/my-profile/edit-project/edit-project.component';
 
 
 
@@ -49,7 +50,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     VerifyAccountComponent,
     ToastComponent,
     AddProjectComponent,
-    MyProjectListComponent
+    MyProjectListComponent,
+    EditProjectComponent
 
   ],
   imports: [

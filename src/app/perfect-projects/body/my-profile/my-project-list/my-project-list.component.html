@@ -40,7 +40,7 @@
             <button class="btn btn-danger col-3 m-1 text-center" (click)="onProjectDelete(project.id)">
               <i class="bi bi-x-lg"></i>
             </button>
-            <button class="btn btn-secondary col-3 m-1 text-center">
+            <button class="btn btn-secondary col-3 m-1 text-center" [routerLink]="['/my-profile/edit-project', project.id]">
               <i class="bi bi-pen"></i>
             </button>
           </div>

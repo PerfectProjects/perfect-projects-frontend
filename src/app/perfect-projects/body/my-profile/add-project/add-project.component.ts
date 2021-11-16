@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import Quill from 'quill';
 import BlotFormatter, {DeleteAction, ImageSpec, ResizeAction} from 'quill-blot-formatter';
 import {ToastService} from "../../../../services/toast.service";
@@ -22,7 +22,7 @@ class CustomImageSpec extends ImageSpec {
   templateUrl: './add-project.component.html',
   styleUrls: ['./add-project.component.css']
 })
-export class AddProjectComponent implements OnInit{
+export class AddProjectComponent implements OnInit {
 
   inputProjectTitle: string = "";
   inputBriefDescription: string = "";
@@ -31,6 +31,8 @@ export class AddProjectComponent implements OnInit{
 
   imageChangedEvent: any = "";
   croppedImage: any = "";
+  // quillEditor: any;
+  // projectId: string | null ;
 
   constructor(private projectApiCaller: ProjectApiCallerService,
               private router: Router,
@@ -67,6 +69,7 @@ export class AddProjectComponent implements OnInit{
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
   }
+
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
   }

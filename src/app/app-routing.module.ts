@@ -9,6 +9,7 @@ import {ProjectPageComponent} from "./perfect-projects/body/project-page/project
 import {VerifyAccountComponent} from "./perfect-projects/body/verify-account/verify-account.component";
 import {AddProjectComponent} from "./perfect-projects/body/my-profile/add-project/add-project.component";
 import {MyProjectListComponent} from "./perfect-projects/body/my-profile/my-project-list/my-project-list.component";
+import {EditProjectComponent} from "./perfect-projects/body/my-profile/edit-project/edit-project.component";
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
         path: 'my-profile', component: MyProfileComponent,
         children:[
           {path: '', component: MyProjectListComponent},
-          {path: 'add-project', component: AddProjectComponent}
+          {path: 'add-project', component: AddProjectComponent},
+          {path: 'edit-project/:projectId', component: EditProjectComponent}
         ]
       },
       {path: 'project/:projectId', component: ProjectPageComponent},
