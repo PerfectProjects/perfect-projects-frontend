@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BasicProjectData} from "../../../../models/basic-project-data";
 
 @Component({
   selector: 'app-project',

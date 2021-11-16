@@ -19,7 +19,11 @@ export class ProjectListComponent implements OnInit {
       console.log(response);
       this.projects = response.projects;
       this.projects.forEach(project => {
-        project.mainPicture = atob(project.mainPicture);
+        if (project.mainPicture === "") {
+          project.mainPicture = "assets/perfectProjectsDefaultPicture.png";
+        } else {
+          project.mainPicture = atob(project.mainPicture);
+        }
         project.briefDescription = atob(project.briefDescription);
       });
     });

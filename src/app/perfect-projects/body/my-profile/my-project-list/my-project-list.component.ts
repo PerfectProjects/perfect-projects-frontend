@@ -27,6 +27,7 @@ export class MyProjectListComponent implements OnInit {
   onProjectDelete(projectId: string) {
     this.projectApiCaller.deleteProject(projectId).subscribe((response) => {
       if (response.success && this.projects !== undefined) {
+        this.toast.showMessage(`Project has been deleted`, ToastState.INFO);
         const index = this.projects.findIndex(x => x.id == projectId);
         this.projects.splice(index, 1);
         this.projects = [...this.projects];
@@ -63,7 +64,11 @@ export class MyProjectListComponent implements OnInit {
       if (response.projects !== undefined) {
         this.projects = [...response.projects];
         this.projects.forEach(project => {
-          project.mainPicture = atob(project.mainPicture);
+          if (project.mainPicture === "") {
+            project.mainPicture = "assets/perfectProjectsDefaultPicture.png";
+          } else {
+            project.mainPicture = atob(project.mainPicture);
+          }
           project.briefDescription = atob(project.briefDescription);
         });
       }

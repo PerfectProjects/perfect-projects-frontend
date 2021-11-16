@@ -44,7 +44,7 @@
           <input hidden type="file" (change)="fileChangeEvent($event)"/>
         </label>
         <div class="d-flex justify-content-center">
-          <div class="col-md-6 ">
+          <div *ngIf="imageChangedEvent !== ''" class="col-md-6">
             <image-cropper
               [imageChangedEvent]="imageChangedEvent"
               [maintainAspectRatio]="true"
@@ -53,7 +53,7 @@
               (imageCropped)="imageCropped($event)">
             </image-cropper>
             <div class="d-flex justify-content-center">
-              <div *ngIf="croppedImage !== ''">
+              <div >
                 <img [src]="croppedImage" alt="Main picture"/>
               </div>
             </div>
