@@ -31,8 +31,6 @@ export class AddProjectComponent implements OnInit {
 
   imageChangedEvent: any = "";
   croppedImage: any = "";
-  // quillEditor: any;
-  // projectId: string | null ;
 
   constructor(private projectApiCaller: ProjectApiCallerService,
               private router: Router,
@@ -50,7 +48,7 @@ export class AddProjectComponent implements OnInit {
       id: "",
       title: this.inputProjectTitle,
       author: this.auth.getUsername(),
-      visible: false,
+      visible: true,
       timestamp: 0,
       description: btoa(quillEditor.root.innerHTML),
       briefDescription: btoa(this.inputBriefDescription),

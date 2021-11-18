@@ -11,8 +11,18 @@ export class UserProfileApiCallerService {
   constructor(private http: HttpClient) {
   }
 
-  public getProjects () {
-      return this.http.get<UserProfileData>(
-        `${environment.apiURL}/user-profile`);
-    }
+  public getProjects() {
+    return this.http.get<UserProfileData>(
+      `${environment.apiURL}/user-profile`);
+  }
+
+  public updateVisibility(projectId: string, visible: boolean) {
+    return this.http.post<{ success: boolean }>(
+      `${environment.apiURL}/user-profile/update-visibility`,
+      {
+        "projectId": projectId,
+        "visible": visible
+      });
+  }
+
 }

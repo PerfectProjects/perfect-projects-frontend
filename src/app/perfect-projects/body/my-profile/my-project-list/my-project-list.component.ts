@@ -35,25 +35,11 @@ export class MyProjectListComponent implements OnInit {
     });
   }
 
-  switchVisibility(basicProject: BasicProjectData) {
-    const project: ProjectData = {
-      author: "",
-      briefDescription: "",
-      description: "",
-      mainPicture: "",
-      title: "",
-      timestamp: basicProject.timestamp,
-      id: basicProject.id,
-      visible: !basicProject.visible
-    };
-    this.projectApiCaller.updateProject(project)
+  updateVisibility(projectId: string, visible: boolean) {
+    this.userProfileApiCaller.updateVisibility(projectId, visible)
       .subscribe((response) => {
         if (response.success) {
-          if(!basicProject.visible) {
-            this.toast.showMessage(`${basicProject.title} is now visible`, ToastState.INFO);
-          } else {
-            this.toast.showMessage(`${basicProject.title} is now hidden`, ToastState.INFO);
-          }
+            this.toast.showMessage(`Updated visibility`, ToastState.INFO);
           this.loadProjects();
         }
       });
