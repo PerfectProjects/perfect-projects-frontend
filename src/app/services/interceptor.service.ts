@@ -18,6 +18,7 @@ export class InterceptorService implements HttpInterceptor {
     `${environment.apiURL}/access/sign-up`,
     `${environment.apiURL}/access/verify-account`,
     `${environment.apiURL}/projects`,
+    `${environment.apiURL}/scores/get-scores`,
   ];
 
   constructor(private accessApiCaller: AccessApiCallerService,
