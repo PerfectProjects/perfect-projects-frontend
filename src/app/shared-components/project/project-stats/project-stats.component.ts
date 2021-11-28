@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ScoresApiCallerService} from "../../../../../api-caller/scores-api-caller.service";
-import {AuthService} from "../../../../../services/auth.service";
-import {ToastService} from "../../../../../services/toast.service";
-import {ToastState} from "../../../../../enums/toast-state";
+import {ScoresApiCallerService} from "../../../api-caller/scores-api-caller.service";
+import {AuthService} from "../../../services/auth.service";
+import {ToastService} from "../../../services/toast.service";
+import {ToastState} from "../../../enums/toast-state";
+
 
 @Component({
   selector: 'app-project-stats',
