@@ -25,4 +25,8 @@ export class UserProfileApiCallerService {
       });
   }
 
+  public getSavedProjects() {
+    return this.http.get<UserProfileData>(
+      `${environment.apiURL}/user-profile/get-saved-projects`);
+  }
 }

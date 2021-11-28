@@ -1,4 +1,4 @@
 export interface ScoresData{
-  scores: number,
+  scores?: number,
   scored?: boolean
 }

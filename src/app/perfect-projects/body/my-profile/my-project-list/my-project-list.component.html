@@ -1,9 +1,12 @@
 <div>
-  <div>
-    <button class="btn btn-info col-12" [routerLink]="['/my-profile/add-project']">Add Project</button>
+  <div class="row justify-content-center">
+    <button class="btn btn-info col-5" [routerLink]="['/my-profile/add-project']">Add Project</button>
+    <button class="btn btn-info col-5 offset-1" [routerLink]="['/my-profile/saved-projects']">Saved Projects</button>
   </div>
-  <div class="text-left text-info pt-3">
-    <h4>MY PROJECTS</h4>
+  <div>
+    <div class="text-left text-info pt-3">
+      <h4>MY PROJECTS</h4>
+    </div>
   </div>
   <br>
   <div *ngIf="projects; else loadingProjects">
