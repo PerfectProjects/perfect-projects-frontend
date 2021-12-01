@@ -30,6 +30,7 @@ import {QuillModule} from "ngx-quill";
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { EditProjectComponent } from './perfect-projects/body/my-profile/edit-project/edit-project.component';
 import { SavedProjectsComponent } from './perfect-projects/body/my-profile/saved-projects/saved-projects.component';
+import { NotFoundComponent } from './perfect-projects/body/not-found/not-found.component';
 
 
 
@@ -53,7 +54,8 @@ import { SavedProjectsComponent } from './perfect-projects/body/my-profile/saved
     AddProjectComponent,
     MyProjectListComponent,
     EditProjectComponent,
-    SavedProjectsComponent
+    SavedProjectsComponent,
+    NotFoundComponent
 
   ],
   imports: [

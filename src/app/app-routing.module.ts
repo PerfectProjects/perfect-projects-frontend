@@ -11,6 +11,7 @@ import {AddProjectComponent} from "./perfect-projects/body/my-profile/add-projec
 import {MyProjectListComponent} from "./perfect-projects/body/my-profile/my-project-list/my-project-list.component";
 import {EditProjectComponent} from "./perfect-projects/body/my-profile/edit-project/edit-project.component";
 import {SavedProjectsComponent} from "./perfect-projects/body/my-profile/saved-projects/saved-projects.component";
+import {NotFoundComponent} from "./perfect-projects/body/not-found/not-found.component";
 
 const routes: Routes = [
   {
@@ -29,6 +30,8 @@ const routes: Routes = [
       },
       {path: 'project/:projectId', component: ProjectPageComponent},
       {path: 'verify-account/:username', component: VerifyAccountComponent},
+      {path: 'not-found', component: NotFoundComponent},
+      {path: '**', redirectTo: 'not-found'}
     ]
   }
 ];
