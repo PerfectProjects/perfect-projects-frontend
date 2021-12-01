@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {UserProfileApiCallerService} from "../../../../api-caller/user-profile-api-caller.service";
 import {ProjectApiCallerService} from "../../../../api-caller/project-api-caller.service";
 import {BasicProjectData} from "../../../../models/basic-project-data";
-import {ProjectData} from "../../../../models/project-data";
 import {ToastService} from "../../../../services/toast.service";
 import {ToastState} from "../../../../enums/toast-state";
 

@@ -11,6 +11,8 @@ import {ProjectData} from "../../../models/project-data";
 export class ProjectPageComponent implements OnInit {
 
   public project: ProjectData | undefined;
+  public latestUpdateDate: any;
+  public latestUpdateTime: any;
 
   constructor(private route: ActivatedRoute,
               private projectRest: ProjectApiCallerService) {
@@ -35,6 +37,10 @@ export class ProjectPageComponent implements OnInit {
               visible: response.visible,
               timestamp: response.timestamp
             };
+            const date: Date = new Date(response.timestamp * 1000);
+            this.latestUpdateDate = date.toLocaleDateString();
+            this.latestUpdateTime = date.toLocaleTimeString();
+
           }
         });
       }

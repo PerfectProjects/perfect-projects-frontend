@@ -48,7 +48,7 @@ export class AddProjectComponent implements OnInit {
       id: "",
       title: this.inputProjectTitle,
       author: this.auth.getUsername(),
-      visible: true,
+      visible: false,
       timestamp: 0,
       description: btoa(quillEditor.root.innerHTML),
       briefDescription: btoa(this.inputBriefDescription),
