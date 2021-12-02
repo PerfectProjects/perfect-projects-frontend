@@ -51,6 +51,7 @@ export class InterceptorService implements HttpInterceptor {
         return next.handle(request);
       }),
       catchError(error => {
+        this.auth.cleanAuthorization();
         this.router.navigate(["/"]);
         return throwError(error);
       }));

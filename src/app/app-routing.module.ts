@@ -12,6 +12,7 @@ import {MyProjectListComponent} from "./perfect-projects/body/my-profile/my-proj
 import {EditProjectComponent} from "./perfect-projects/body/my-profile/edit-project/edit-project.component";
 import {SavedProjectsComponent} from "./perfect-projects/body/my-profile/saved-projects/saved-projects.component";
 import {NotFoundComponent} from "./perfect-projects/body/not-found/not-found.component";
+import {AuthGuardService} from "./services/auth-guard.service";
 
 const routes: Routes = [
   {
@@ -20,8 +21,8 @@ const routes: Routes = [
       {path: 'sign-up', component: SignUpComponent},
       {path: 'sign-in', component: SignInComponent},
       {
-        path: 'my-profile', component: MyProfileComponent,
-        children:[
+        path: 'my-profile', canActivate: [AuthGuardService], component: MyProfileComponent,
+        children: [
           {path: '', component: MyProjectListComponent},
           {path: 'add-project', component: AddProjectComponent},
           {path: 'edit-project/:projectId', component: EditProjectComponent},
