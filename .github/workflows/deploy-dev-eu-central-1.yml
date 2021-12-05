@@ -1,6 +1,10 @@
 name: deploy-eu-central-1-dev
 
 on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -21,6 +25,7 @@ jobs:
         run: |
           npm install
           npm --version
+          npm install -g @angular/cli@latest
           ng build --configuration dev
           pipenv sync
           npx serverless --version
