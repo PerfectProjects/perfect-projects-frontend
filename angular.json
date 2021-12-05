@@ -42,7 +42,7 @@
             ]
           },
           "configurations": {
-            "production": {
+            "prod": {
               "budgets": [
                 {
                   "type": "initial",
@@ -63,7 +63,7 @@
               ],
               "outputHashing": "all"
             },
-            "development": {
+            "dev": {
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
@@ -97,11 +97,11 @@
           },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {
-              "browserTarget": "perfect-projects-frontend:build:production"
+            "prod": {
+              "browserTarget": "perfect-projects-frontend:build:prod"
             },
-            "development": {
-              "browserTarget": "perfect-projects-frontend:build:development"
+            "dev": {
+              "browserTarget": "perfect-projects-frontend:build:dev"
             },
             "local": {
               "browserTarget": "perfect-projects-frontend:build:local"
