@@ -27,6 +27,5 @@ jobs:
           npm --version
           npm install -g @angular/cli@latest
           ng build --configuration dev
-          pipenv sync
           npx serverless --version
           npx serverless deploy --region eu-central-1 --stage dev
