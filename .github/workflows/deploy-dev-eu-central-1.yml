@@ -18,6 +18,7 @@ jobs:
           npm install
           with:
             node-version: '16'
+          with:
             name: project_build
             path: node_modules/
   lint:
