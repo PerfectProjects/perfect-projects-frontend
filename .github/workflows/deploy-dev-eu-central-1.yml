@@ -23,8 +23,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Build project
-        uses: actions/checkout@v2
         run: |
           npm install -g @angular/cli@latest
           ng build --configuration dev
@@ -49,9 +49,10 @@ jobs:
   sync-s3:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/download-artifact@v1
       - name: Sync to s3
-        uses: actions/download-artifact@v1
-        with:
-          name: project_build
-        run: npx serverless s3sync --region eu-central-1 --stage dev
-
+        run: |
+          npx serverless s3sync --region eu-central-1 --stage dev
+          with:
+            name: project_build
+      
