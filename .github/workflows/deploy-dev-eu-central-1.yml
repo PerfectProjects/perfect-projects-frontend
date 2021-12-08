@@ -16,16 +16,17 @@ jobs:
         with:
           node-version: '16'
       - name: Install dependencies
-        run: |
-          npm install
-          with:
+        run: npm install
+      - name: Save dependencies
+        uses: actions/upload-artifact@v1
+        with:
             name: project_build
             path: node_modules/
   lint:
     needs: setup
     runs-on: ubuntu-latest
     steps:
-      - name: Run a one-line script
+      - name: Run lint
         run: |
           npm install
           npm --version
@@ -39,9 +40,11 @@ jobs:
         run: |
           npm install -g @angular/cli@latest
           ng build --configuration dev
-          with:
-            name: project_build
-            path: dist
+      - name: Save build
+        uses: actions/upload-artifact@v1
+        with:
+          name: project_build
+          path: dist
   deploy:
     needs: build
     runs-on: ubuntu-latest
