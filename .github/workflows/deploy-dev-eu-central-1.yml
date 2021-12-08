@@ -8,6 +8,29 @@ on:
   workflow_dispatch:
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Run a one-line script
+        run: |
+          npm install
+          npm --version
+          npx eslint "**/*.ts"
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build project
+        uses: actions/checkout@v2
+        run: |
+          npm install -g @angular/cli@latest
+          ng build --configuration dev
+          with:
+            name: project_build
+            path: dist
   deploy-eu-central-1-dev:
     runs-on: ubuntu-latest
     steps:
@@ -21,12 +44,14 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - name: Run a one-line script
-        run: |
-          npm install
-          npm --version
-          npm install -g @angular/cli@latest
-          npx serverless --version
-          npx serverless deploy --region eu-central-1 --stage dev
-          ng build --configuration dev
-          npx serverless s3sync --region eu-central-1 --stage dev
+      - name: deploy_frontend
+        run: npx serverless deploy --region eu-central-1 --stage dev
+  sync-s3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync to s3
+        uses: actions/download-artifact@v1
+        with:
+          name: project_build
+        run: npx serverless s3sync --region eu-central-1 --stage dev
+
