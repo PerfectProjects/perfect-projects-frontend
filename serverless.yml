@@ -41,12 +41,19 @@ custom:
     subjectAlternativeNames:
       - www.${opt:stage}-${opt:region}.perfect-projects.link
       - ${opt:stage}-${opt:region}.perfect-projects.link
+  cloudfrontInvalidate:
+    - distributionId: !GetAtt [ frontendCloudFrontDistribution, Id ]
+      autoInvalidate: true
+      items:
+        - "/*"
+      stage: ${opt:stage}
   certificateArn:
     dev-eu-central-1: arn:aws:acm:us-east-1:499329456290:certificate/1061dd4f-c76c-43c3-a107-b78d57e0ed39
 plugins:
   - serverless-deployment-bucket
   - serverless-certificate-creator
   - serverless-s3-sync
+  - serverless-cloudfront-invalidate
 
 resources:
   Resources:
