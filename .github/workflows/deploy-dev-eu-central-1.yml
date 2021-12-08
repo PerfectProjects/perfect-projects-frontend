@@ -21,6 +21,7 @@ jobs:
             name: project_build
             path: node_modules/
   lint:
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Run a one-line script
