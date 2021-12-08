@@ -21,6 +21,7 @@ jobs:
           npm --version
           npx eslint "**/*.ts"
   build:
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -31,7 +32,8 @@ jobs:
           with:
             name: project_build
             path: dist
-  deploy-eu-central-1-dev:
+  deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Configure AWS Credentials
@@ -46,7 +48,8 @@ jobs:
           node-version: '16'
       - name: deploy_frontend
         run: npx serverless deploy --region eu-central-1 --stage dev
-  sync-s3:
+  sync:
+    needs: deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v1
