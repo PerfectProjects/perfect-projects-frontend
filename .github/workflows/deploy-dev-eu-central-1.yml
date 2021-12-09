@@ -20,7 +20,7 @@ jobs:
       - name: cache dependencies
         uses: actions/cache@v2.1.7
         with:
-            path: node_modules
+            path: /
             key: cached_dependencies
   build:
     needs: setup
