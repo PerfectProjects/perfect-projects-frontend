@@ -34,11 +34,11 @@ jobs:
       - name: install angular CLI
         run: npm install -g @angular/cli@latest
       - name: build project
-        run: ng build --configuration dev
+        run: npm run build:ci
       - name: cache build
         uses: actions/cache@v2.1.7
         with:
-          path: dist
+          path: ~/dist
           key: cached_project_build
   deploy:
     needs: build
@@ -66,4 +66,4 @@ jobs:
           npx serverless s3sync --region eu-central-1 --stage dev
           with:
             name: project_build
-      
+
