@@ -34,7 +34,7 @@ jobs:
       - name: install angular CLI
         run: npm install -g @angular/cli@latest
       - name: build project
-        run: npm run build:ci
+        run: npm run build:dev
       - name: cache build
         uses: actions/cache@v2.1.7
         with:
