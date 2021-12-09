@@ -15,36 +15,33 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - name: Install dependencies
+      - name: install dependencies
         run: npm install
-      - name: Save dependencies
-        uses: actions/upload-artifact@v1
+      - name: cache dependencies
+        uses: actions/cache@v2.1.7
         with:
-            name: project_build
             path: node_modules/
+            key: cached_dependencies
   lint:
     needs: setup
     runs-on: ubuntu-latest
     steps:
-      - name: Run lint
-        run: |
-          npm install
-          npm --version
-          npx eslint "**/*.ts"
+      - name: run lint
+        run: npx eslint "**/*.ts"
   build:
     needs: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build project
-        run: |
-          npm install -g @angular/cli@latest
-          ng build --configuration dev
-      - name: Save build
-        uses: actions/upload-artifact@v1
+      - name: install angular CLI
+        run: npm install -g @angular/cli@latest
+      - name: build project
+        run: ng build --configuration dev
+      - name: cache build
+        uses: actions/cache@v2.1.7
         with:
-          name: project_build
           path: dist
+          key: cached_project_build
   deploy:
     needs: build
     runs-on: ubuntu-latest
