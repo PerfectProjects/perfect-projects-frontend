@@ -20,17 +20,10 @@ jobs:
       - name: cache dependencies
         uses: actions/cache@v2.1.7
         with:
-            path: node_modules/
+            path: node_modules
             key: cached_dependencies
-  lint:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: run lint
-        run: npx eslint "**/*.ts"
   build:
-    needs: lint
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
