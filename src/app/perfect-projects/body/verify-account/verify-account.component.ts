@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ToastService} from "../../../services/toast.service";
 import {AuthService} from "../../../services/auth.service";
 import {ToastState} from "../../../enums/toast-state";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AccessApiCallerService} from "../../../api-caller/access-api-caller.service";
 
 @Component({
@@ -18,7 +18,8 @@ export class VerifyAccountComponent implements OnInit {
   constructor(private accessApiCaller: AccessApiCallerService,
               private toast: ToastService,
               private auth: AuthService,
-              private route: ActivatedRoute,) {
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -33,6 +34,7 @@ export class VerifyAccountComponent implements OnInit {
     this.accessApiCaller.sendCode(this.inputConfirmationCode, this.username)
       .subscribe((response) => {
         if (response.success) {
+          this.router.navigate(["/sign-in"]).then();
           this.toast.showMessage("Account verified!", ToastState.SUCCESS);
         }
       });
