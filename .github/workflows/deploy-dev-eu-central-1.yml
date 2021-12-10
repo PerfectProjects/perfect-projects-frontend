@@ -29,4 +29,15 @@ jobs:
         run: npx serverless deploy --region eu-central-1 --stage dev
       - name: sync to s3
         run: npx serverless s3sync --region eu-central-1 --stage dev
-
+  invalidate:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: awact/cloudfront-action@master
+        env:
+          SOURCE_PATH: '/*'
+          AWS_REGION: 'eu-central-1'
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          DISTRIBUTION_ID: E1I5VF5W1G5QHX
