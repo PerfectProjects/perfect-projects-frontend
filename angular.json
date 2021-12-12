@@ -90,9 +90,9 @@
         },
         "serve": {
           "options": {
-            "sslCert": "perfect-projects.com.cert",
-            "sslKey": "perfect-projects.com.key",
-            "host": "perfect-projects.com",
+            "sslCert": "perfect-projects.link.cert",
+            "sslKey": "perfect-projects.link.key",
+            "host": "perfect-projects.link",
             "ssl": true
           },
           "builder": "@angular-devkit/build-angular:dev-server",

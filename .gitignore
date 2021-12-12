@@ -1,8 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # certificate
-perfect-projects.com.cert
-perfect-projects.com.key
+perfect-projects.link.cert
+perfect-projects.link.key
 
 # compiled output
 /dist
