@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {AccessApiCallerService} from "../../api-caller/access-api-caller.service";
 import {ToastService} from "../../services/toast.service";
-import {ToastState} from "../../enums/toast-state";
+import {ToastType} from "../../enums/toast-type";
 import {Router} from "@angular/router";
 
 @Component({
@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
     this.accessApiCaller.signOut().subscribe((response)=>{
       console.log(response);
         if (response.success){
-          this.toast.showMessage("You were signed out", ToastState.INFO);
+          this.toast.showMessage("You were signed out", ToastType.INFO);
           this.auth.cleanAuthorization();
           this.router.navigate(["/"]);
         }

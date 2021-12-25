@@ -3,7 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {ProjectApiCallerService} from "../../../api-caller/project-api-caller.service";
 import {ProjectData} from "../../../models/project-data";
 import {ToastService} from "../../../services/toast.service";
-import {ToastState} from "../../../enums/toast-state";
+import {ToastType} from "../../../enums/toast-type";
 
 @Component({
   selector: 'app-project-page',
@@ -45,7 +45,7 @@ export class ProjectPageComponent implements OnInit {
             this.latestUpdateTime = date.toLocaleTimeString();
           }
         },(error)=>{
-          this.toast.showMessage("The project does not exist or is no longer public", ToastState.ERROR);
+          this.toast.showMessage("The project does not exist or is no longer public", ToastType.ERROR);
           this.project = {
             id: "",
             title: "I can't find the project :(",

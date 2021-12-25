@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ToastState} from "../../../enums/toast-state";
+import {ToastType} from "../../../enums/toast-type";
 
 @Component({
   selector: 'app-toast',
@@ -17,14 +17,14 @@ export class ToastComponent implements OnInit {
   }
 
   isSuccess = () => {
-   return this.type === ToastState.SUCCESS;
+   return this.type === ToastType.SUCCESS;
   }
 
   isError = () => {
-    return this.type === ToastState.ERROR;
+    return this.type === ToastType.ERROR;
   }
 
   isInfo = () => {
-    return this.type === ToastState.INFO;
+    return this.type === ToastType.INFO;
   }
 }

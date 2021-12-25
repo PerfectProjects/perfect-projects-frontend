@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ScoresApiCallerService} from "../../../api-caller/scores-api-caller.service";
 import {AuthService} from "../../../services/auth.service";
 import {ToastService} from "../../../services/toast.service";
-import {ToastState} from "../../../enums/toast-state";
+import {ToastType} from "../../../enums/toast-type";
 import {SavesApiCallerService} from "../../../api-caller/saves-api-caller.service";
 
 
@@ -72,7 +72,7 @@ export class ProjectStatsComponent implements OnInit {
         }
       });
     } else {
-      this.toast.showMessage("Sign in to score a project!", ToastState.INFO);
+      this.toast.showMessage("Sign in to score a project!", ToastType.INFO);
     }
   }
 
@@ -113,7 +113,7 @@ export class ProjectStatsComponent implements OnInit {
         }
       });
     } else {
-      this.toast.showMessage("Sign in to save a project!", ToastState.INFO);
+      this.toast.showMessage("Sign in to save a project!", ToastType.INFO);
     }
   }
 }

@@ -5,7 +5,7 @@ import {ToastService} from "../../../../services/toast.service";
 import {AuthService} from "../../../../services/auth.service";
 import Quill from "quill";
 import {ProjectData} from "../../../../models/project-data";
-import {ToastState} from "../../../../enums/toast-state";
+import {ToastType} from "../../../../enums/toast-type";
 import {ImageCroppedEvent} from "ngx-image-cropper";
 import BlotFormatter, {DeleteAction, ImageSpec, ResizeAction} from "quill-blot-formatter";
 
@@ -62,7 +62,7 @@ export class EditProjectComponent implements OnInit {
       this.projectApiCaller.updateProject(projectData)
         .subscribe((response) => {
           if (response.success) {
-            this.toast.showMessage(`${this.inputProjectTitle} has been updated!`, ToastState.SUCCESS);
+            this.toast.showMessage(`${this.inputProjectTitle} has been updated!`, ToastType.SUCCESS);
             this.router.navigate(["/my-profile"]).then();
           }
         });

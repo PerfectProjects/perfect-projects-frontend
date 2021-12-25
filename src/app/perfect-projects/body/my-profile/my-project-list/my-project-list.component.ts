@@ -3,7 +3,7 @@ import {UserProfileApiCallerService} from "../../../../api-caller/user-profile-a
 import {ProjectApiCallerService} from "../../../../api-caller/project-api-caller.service";
 import {BasicProjectData} from "../../../../models/basic-project-data";
 import {ToastService} from "../../../../services/toast.service";
-import {ToastState} from "../../../../enums/toast-state";
+import {ToastType} from "../../../../enums/toast-type";
 
 @Component({
   selector: 'app-my-project-list',
@@ -26,7 +26,7 @@ export class MyProjectListComponent implements OnInit {
   onProjectDelete(projectId: string) {
     this.projectApiCaller.deleteProject(projectId).subscribe((response) => {
       if (response.success && this.projects !== undefined) {
-        this.toast.showMessage(`Project has been deleted`, ToastState.INFO);
+        this.toast.showMessage(`Project has been deleted`, ToastType.INFO);
         const index = this.projects.findIndex(x => x.id == projectId);
         this.projects.splice(index, 1);
         this.projects = [...this.projects];
@@ -38,7 +38,7 @@ export class MyProjectListComponent implements OnInit {
     this.userProfileApiCaller.updateVisibility(projectId, visible)
       .subscribe((response) => {
         if (response.success) {
-            this.toast.showMessage(`Updated visibility`, ToastState.INFO);
+            this.toast.showMessage(`Updated visibility`, ToastType.INFO);
           this.loadProjects();
         }
       });

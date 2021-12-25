@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ToastService} from "../../../services/toast.service";
 import {AuthService} from "../../../services/auth.service";
-import {ToastState} from "../../../enums/toast-state";
+import {ToastType} from "../../../enums/toast-type";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AccessApiCallerService} from "../../../api-caller/access-api-caller.service";
 
@@ -35,7 +35,7 @@ export class VerifyAccountComponent implements OnInit {
       .subscribe((response) => {
         if (response.success) {
           this.router.navigate(["/sign-in"]).then();
-          this.toast.showMessage("Account verified!", ToastState.SUCCESS);
+          this.toast.showMessage("Account verified!", ToastType.SUCCESS);
         }
       });
   }

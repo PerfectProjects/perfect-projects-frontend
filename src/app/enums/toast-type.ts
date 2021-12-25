@@ -1,4 +1,4 @@
-export enum ToastState {
+export enum ToastType {
   SUCCESS = "SUCCESS",
   ERROR = "ERROR",
   INFO = "INFO"

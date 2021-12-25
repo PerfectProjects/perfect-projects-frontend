@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import Quill from 'quill';
 import BlotFormatter, {DeleteAction, ImageSpec, ResizeAction} from 'quill-blot-formatter';
 import {ToastService} from "../../../../services/toast.service";
-import {ToastState} from "../../../../enums/toast-state";
+import {ToastType} from "../../../../enums/toast-type";
 import {AuthService} from "../../../../services/auth.service";
 import {ProjectApiCallerService} from "../../../../api-caller/project-api-caller.service";
 import {ProjectData} from "../../../../models/project-data";
@@ -57,7 +57,7 @@ export class AddProjectComponent implements OnInit {
     this.projectApiCaller.addProject(projectData)
       .subscribe((response) => {
         if (response.success) {
-          this.toast.showMessage(`${this.inputProjectTitle} has been added!`, ToastState.SUCCESS);
+          this.toast.showMessage(`${this.inputProjectTitle} has been added!`, ToastType.SUCCESS);
           this.router.navigate(["/my-profile"]).then();
         }
       });

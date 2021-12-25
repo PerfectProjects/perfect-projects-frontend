@@ -3,7 +3,7 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "
 import {Observable} from "rxjs";
 import {AuthService} from "./auth.service";
 import {ToastService} from "./toast.service";
-import {ToastState} from "../enums/toast-state";
+import {ToastType} from "../enums/toast-type";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class AuthGuardService implements CanActivate{
       return true;
     } else {
       this.router.navigate(["/sign-in"]).then(() => {
-        this.toast.showMessage("Please sign in to gain access to these resources", ToastState.ERROR);
+        this.toast.showMessage("Please sign in to gain access to these resources", ToastType.ERROR);
       });
       return false;
     }
