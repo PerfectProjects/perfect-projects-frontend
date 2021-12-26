@@ -1,12 +1,7 @@
 service: ${self:custom.prefix}-frontend
 
 frameworkVersion: '2'
-# To deploy perfect-projects-frontend first, you need:
-# 1. Create certificate and paste its arn to the custom.certificateArn section
-# 2. Deploy stack using:  serverless deploy --region eu-central-1 --stage dev
-# 3. Build app using: ng build --configuration dev
-# 4. Sync s3 using: serverless s3sync --region eu-central-1 --stage dev
-# 5. Invalidate CloudFront
+
 provider:
   name: aws
   runtime: python3.8
@@ -31,9 +26,8 @@ provider:
 custom:
   prefix: perfect-projects-${self:provider.stage}-${self:provider.region}
   s3Sync:
-    # A simple configuration for copying static assets
-    - bucketName: ${self:custom.prefix}-frontend # required
-      localDir: dist/perfect-projects-frontend # required
+    - bucketName: ${self:custom.prefix}-frontend
+      localDir: dist/perfect-projects-frontend
   customCertificate:
     certificateName: ${opt:stage}-${opt:region}.perfect-projects.link
     hostedZoneIds: Z046301435EGQHE8A33R6
@@ -50,7 +44,6 @@ plugins:
 
 resources:
   Resources:
-    ## Specifying the S3 Bucket
     frontendS3Bucket:
       Type: AWS::S3::Bucket
       Properties:
@@ -59,7 +52,6 @@ resources:
         WebsiteConfiguration:
           IndexDocument: index.html
           ErrorDocument: index.html
-    ## Specifying the policies to make sure all files inside the Bucket are avaialble to CloudFront
     frontendS3BucketPolicy:
       Type: AWS::S3::BucketPolicy
       Properties:
@@ -74,7 +66,6 @@ resources:
               Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { Ref : frontendS3Bucket }, "/*" ] ]  }
               Principal:
                 AWS: { "Fn::Join" : [" ", ["arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity", { Ref: cloudFrontOriginAccessIdentity } ] ] }
-    ## Specifying the CloudFront Distribution to server your Web Application
     frontendCloudFrontDistribution:
       Type: AWS::CloudFront::Distribution
       Properties:
@@ -87,22 +78,15 @@ resources:
                     ".s3.amazonaws.com"
                   ]
                 ]
-              ## An identifier for the origin which must be unique within the distribution
               Id: frontend
               S3OriginConfig:
                 OriginAccessIdentity:
                   { "Fn::Join" : ["", ["origin-access-identity/cloudfront/", { Ref: cloudFrontOriginAccessIdentity } ] ]  }
-              ## In case you want to restrict the bucket access use S3OriginConfig and remove CustomOriginConfig
-              # S3OriginConfig:
-              #   OriginAccessIdentity: origin-access-identity/cloudfront/E127EXAMPLE51Z
           Enabled: 'true'
-          ## Uncomment the following section in case you are using a custom domain
           Aliases:
             - www.${opt:stage}-${opt:region}.perfect-projects.link
             - ${opt:stage}-${opt:region}.perfect-projects.link
           DefaultRootObject: index.html
-          ## Since the Single Page App is taking care of the routing we need to make sure ever path is served with index.html
-          ## The only exception are files that actually exist e.h. app.js, reset.css
           CustomErrorResponses:
             - ErrorCode: 404
               ResponseCode: 200
@@ -116,16 +100,12 @@ resources:
               - PATCH
               - POST
               - PUT
-            ## The origin id defined above
             TargetOriginId: frontend
-            ## Defining if and how the QueryString and Cookies are forwarded to the origin which in this case is S3
             ForwardedValues:
               QueryString: 'false'
               Cookies:
                 Forward: none
-            ## The protocol that users can use to access the files in the origin. To allow HTTP use `allow-all`
-            ViewerProtocolPolicy: redirect-to-https
-          ## The certificate to use when viewers use HTTPS to request objects.
+            ViewerProtocolPolicy: redirect-to-https.
           ViewerCertificate:
             AcmCertificateArn: ${self:custom.certificateArn.${self:provider.stage}-${self:provider.region}}
             SslSupportMethod: sni-only
