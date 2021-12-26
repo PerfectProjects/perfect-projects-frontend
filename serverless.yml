@@ -65,7 +65,12 @@ resources:
               Effect: Allow
               Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { Ref : frontendS3Bucket }, "/*" ] ]  }
               Principal:
-                AWS: { "Fn::Join" : [" ", ["arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity", { Ref: cloudFrontOriginAccessIdentity } ] ] }
+                AWS: {
+                  "Fn::Join" : [" ", [
+                      "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity",
+                      { Ref: cloudFrontOriginAccessIdentity }
+                  ] ]
+                }
     frontendCloudFrontDistribution:
       Type: AWS::CloudFront::Distribution
       Properties:
