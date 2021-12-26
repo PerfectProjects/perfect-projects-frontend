@@ -81,7 +81,9 @@ resources:
               Id: frontend
               S3OriginConfig:
                 OriginAccessIdentity:
-                  { "Fn::Join" : ["", ["origin-access-identity/cloudfront/", { Ref: cloudFrontOriginAccessIdentity } ] ]  }
+                  { "Fn::Join" : [
+                      "", ["origin-access-identity/cloudfront/", { Ref: cloudFrontOriginAccessIdentity } ]
+                  ]  }
           Enabled: 'true'
           Aliases:
             - www.${opt:stage}-${opt:region}.perfect-projects.link
@@ -105,7 +107,7 @@ resources:
               QueryString: 'false'
               Cookies:
                 Forward: none
-            ViewerProtocolPolicy: redirect-to-https.
+            ViewerProtocolPolicy: redirect-to-https
           ViewerCertificate:
             AcmCertificateArn: ${self:custom.certificateArn.${self:provider.stage}-${self:provider.region}}
             SslSupportMethod: sni-only
