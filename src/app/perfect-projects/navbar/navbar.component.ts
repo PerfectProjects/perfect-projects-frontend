@@ -27,7 +27,6 @@ export class NavbarComponent implements OnInit {
 
   public onSignOut(){
     this.accessApiCaller.signOut().subscribe((response)=>{
-      console.log(response);
         if (response.success){
           this.toast.showMessage("You were signed out", ToastType.INFO);
           this.auth.cleanAuthorization();

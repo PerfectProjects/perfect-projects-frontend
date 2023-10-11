@@ -103,10 +103,8 @@ export class ProjectStatsComponent implements OnInit {
     const username = this.auth.getUsername();
     if (username !== "") {
       this.savesApiCaller.saveProject(this.projectId).subscribe((response) => {
-        console.log(response);
         if (response.success) {
           if (this.saves !== undefined) {
-            console.log("increasing");
             this.saves++;
             this.saved = true;
           }

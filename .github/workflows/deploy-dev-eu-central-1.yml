@@ -1,43 +1,43 @@
-name: deploy-eu-central-1-dev
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  workflow_dispatch:
-
-jobs:
-  deploy-eu-central-1-dev:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "16"
-      - name: install dependencies
-        run: npm install
-      - name: build project
-        run: npm run build:dev
-      - name: configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-central-1
-      - name: deploy frontend
-        run: npx serverless deploy --region eu-central-1 --stage dev
-      - name: sync to s3
-        run: npx serverless s3sync --region eu-central-1 --stage dev
-  invalidate:
-    needs: deploy-eu-central-1-dev
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - uses: awact/cloudfront-action@master
-        env:
-          SOURCE_PATH: "/*"
-          AWS_REGION: "eu-central-1"
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          DISTRIBUTION_ID: E1I5VF5W1G5QHX
+#name: deploy-eu-central-1-dev
+#
+#on:
+#  push:
+#    branches: [ main ]
+#  pull_request:
+#    branches: [ main ]
+#  workflow_dispatch:
+#
+#jobs:
+#  deploy-eu-central-1-dev:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: actions/setup-node@v2
+#        with:
+#          node-version: "16"
+#      - name: install dependencies
+#        run: npm install
+#      - name: build project
+#        run: npm run build:dev
+#      - name: configure AWS credentials
+#        uses: aws-actions/configure-aws-credentials@v1
+#        with:
+#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          aws-region: eu-central-1
+#      - name: deploy frontend
+#        run: npx serverless deploy --region eu-central-1 --stage dev
+#      - name: sync to s3
+#        run: npx serverless s3sync --region eu-central-1 --stage dev
+#  invalidate:
+#    needs: deploy-eu-central-1-dev
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@master
+#      - uses: awact/cloudfront-action@master
+#        env:
+#          SOURCE_PATH: "/*"
+#          AWS_REGION: "eu-central-1"
+#          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          DISTRIBUTION_ID: E1I5VF5W1G5QHX

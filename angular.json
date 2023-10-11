@@ -77,6 +77,20 @@
                 }
               ]
             },
+            "production": {
+              "buildOptimizer": true,
+              "optimization": true,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": false,
+              "namedChunks": false,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
             "local": {
               "buildOptimizer": false,
               "optimization": false,
@@ -90,10 +104,6 @@
         },
         "serve": {
           "options": {
-            "sslCert": "perfect-projects.link.cert",
-            "sslKey": "perfect-projects.link.key",
-            "host": "perfect-projects.link",
-            "ssl": true
           },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {

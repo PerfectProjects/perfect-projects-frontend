@@ -1,10 +1,8 @@
 service: ${self:custom.prefix}-frontend
 
-frameworkVersion: '2'
-
 provider:
   name: aws
-  runtime: python3.8
+  runtime: python3.11
   lambdaHashingVersion: 20201221
   variablesResolutionMode: 20210326
   region: ${opt:region}
@@ -30,13 +28,13 @@ custom:
       localDir: dist/perfect-projects-frontend
   customCertificate:
     certificateName: ${opt:stage}-${opt:region}.perfect-projects.link
-    hostedZoneIds: Z046301435EGQHE8A33R6
+    hostedZoneIds: Z0244622OB5I5GBJSX1D
     region: us-east-1 # This specific region is required due to an error from Serverless Domain Manager
     subjectAlternativeNames:
       - www.${opt:stage}-${opt:region}.perfect-projects.link
       - ${opt:stage}-${opt:region}.perfect-projects.link
   certificateArn:
-    dev-eu-central-1: arn:aws:acm:us-east-1:499329456290:certificate/1061dd4f-c76c-43c3-a107-b78d57e0ed39
+    production-eu-central-1: arn:aws:acm:us-east-1:499329456290:certificate/6d09cc47-8e60-429f-be73-2a0200a69c27
 plugins:
   - serverless-deployment-bucket
   - serverless-certificate-creator
@@ -122,7 +120,7 @@ resources:
     frontendDNSNames:
       Type: AWS::Route53::RecordSetGroup
       Properties:
-        HostedZoneId: Z046301435EGQHE8A33R6
+        HostedZoneId: Z0244622OB5I5GBJSX1D
         RecordSets:
           - Name: ${opt:stage}-${opt:region}.perfect-projects.link
             Type: A

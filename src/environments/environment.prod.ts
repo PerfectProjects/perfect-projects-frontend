@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiURL: ""
+  apiURL: "https://api-production-eu-central-1.perfect-projects.link"
 };
